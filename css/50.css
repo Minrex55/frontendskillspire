@@ -1,0 +1,436 @@
+/* 
+========================================
+ESTILOS PARA LA PÁGINA DE CONFIGURACIÓN
+========================================
+*/
+:root {
+    --fondo: #1f2831;
+    --color-botones: #0078d4;
+    --color-botones2: #2e3c47;
+    --gris-adicional: #273940;
+    --gris-adicional2: #3a4a56;
+    --fuente: "Poppins", sans-serif;
+    
+    /* Colores del diseño original */
+    --azul-oscuro: #273940;
+    --gris-azulado: #5A6E73;
+    --azul-muy-oscuro: #1f2831;
+    --acento: #A7F2EB;
+    --texto-claro: white;
+    --fondo-claro: #F2F2DF;
+}
+
+
+/* 
+========================================
+RESET Y CONFIGURACIÓN GENERAL
+========================================
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente);
+    color: var(--texto-claro);
+}
+
+body {
+    background-color: var(--fondo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 
+========================================
+HEADER PRINCIPAL
+========================================
+*/
+.containertop {
+    width: 100%;
+    height: 10vh;
+    background-color: var(--gris-adicional);
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(40px);
+}
+
+.containertoplogo {
+    width: 30%;
+    height: 10vh;
+    display: flex;
+}
+
+.logoskill {
+   width: 18%;
+}
+
+.nameskill {
+    align-self: center;
+    font-size: 20px;
+}
+
+.containertopcenter {
+    width: 8%;
+}
+
+.containertopnav {
+    width: 62%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: transparent;
+}
+
+.navbutton {
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--texto-claro);
+    font-size: 20px;
+    border: none;
+    width: auto;
+    height: 100%;
+    margin-left: 5px;
+    padding: 12px;
+    border-radius: 15px;
+    transition: 0.5s;
+}
+
+.navbutton:hover {
+    background-color: var(--texto-claro);
+    color: black;
+    cursor: pointer;
+}
+
+.profilesection {
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 100%;
+}
+
+.profilesection img {
+    width: 80%;
+    height: 80%;
+    padding: 3px;
+}
+.notification-indicator {
+    position: relative;
+    margin-right: 15px;
+}
+
+.notification-icon {
+    width: 24px;
+    height: 24px;
+    background-image: url('/api/placeholder/24/24');
+    background-size: contain;
+    position: relative;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CONTENIDO PRINCIPAL */
+.main-content {
+    margin-top: 10vh;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.page-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 2px solid var(--gris-adicional2);
+}
+
+/* INTEGRACIÓN DE HERRAMIENTAS */
+.integration-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.integration-card {
+    background-color: var(--gris-adicional);
+    border-radius: 10px;
+    padding: 20px;
+    width: calc(33.33% - 20px);
+    min-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.integration-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.integration-card h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.integration-card h3 img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.integration-card p {
+    margin-bottom: 15px;
+    color: #e0e0e0;
+}
+
+.integration-card .status {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-connected {
+    background-color: #4CAF50;
+}
+
+.status-disconnected {
+    background-color: #F44336;
+}
+
+.integration-button {
+    background-color: var(--color-botones2);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.integration-button:hover {
+    background-color: var(--gris-adicional2);
+}
+
+/* Formulario de configuración */
+.config-section {
+    background-color: var(--gris-adicional);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.config-section h2 {
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--gris-adicional2);
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--gris-adicional2);
+    background-color: var(--fondo);
+    color: var(--texto-claro);
+}
+
+.form-group select option {
+    background-color: var(--fondo);
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.save-button {
+    background-color: var(--color-botones);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover {
+    background-color: #0063b1;
+}
+
+.cancel-button {
+    background-color: transparent;
+    border: 1px solid var(--gris-adicional2);
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Modal de integración */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: var(--gris-adicional);
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: modalopen 0.4s;
+}
+
+@keyframes modalopen {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: white;
+}
+
+.modal-header {
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--gris-adicional2);
+}
+
+.modal-header h2 {
+    display: inline-block;
+}
+
+.modal-body {
+    margin-bottom: 20px;
+}
+
+.iframe-container {
+    width: 100%;
+    height: 400px;
+    border: 1px solid var(--gris-adicional2);
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Vista previa de herramienta */
+.tool-preview {
+    display: none;
+    background-color: var(--gris-adicional);
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.tool-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gris-adicional2);
+}
+
+.tool-title {
+    display: flex;
+    align-items: center;
+}
+
+.tool-title img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+}
+
+.close-preview {
+    background-color: transparent;
+    border: none;
+    color: #aaa;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.close-preview:hover {
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .integration-card {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .integration-card {
+        width: 100%;
+    }
+    
+    .modal-content {
+        width: 90%;
+        margin: 20% auto;
+    }
+}

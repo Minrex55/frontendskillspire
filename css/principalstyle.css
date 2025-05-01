@@ -1,0 +1,260 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        
+:root {
+    --fondo: #1f2831;
+    --color-botones: #0078d4;
+    --color-botones2: #2e3c47;
+    --gris-adicional: #273940;
+    --gris-adicional2: #3a4a56;
+    --fuente: "Poppins", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente);
+}
+
+body {
+    background-color: var(--fondo);
+    color: white;
+    min-height: 100vh;
+}
+
+/*Inicio del header*/
+.containertop {
+    width: 100%;
+    height: 10%;
+    background-color: var(--gris-adicional);
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(40px);
+}
+
+.containertoplogo {
+    width: 30%;
+    height: 100%;
+    display: flex;
+}
+
+.logoskill {
+    width: 18%;
+}
+
+.nameskill {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    align-self: center;
+    font-size: 20px;
+    font-family: var(--fuente);
+}
+
+.containertopcenter {
+    width: 8%;
+    height: 10vh;
+}
+
+.containertopnav {
+    width: 62%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #00000000;
+}
+
+.navbutton {
+    text-decoration: none;
+    background-color: #00000000;
+    color: white;
+    font-size: 20px;
+    border-style: none;
+    width: auto;
+    height: 100%;
+    margin-left: 5px;
+    padding: 12px;
+    border-radius: 15px;
+    transition: 0.5s;
+}
+
+.navbutton:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.profilesection {
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 100%;
+}
+
+.profilesection img {
+    width: 80%;
+    height: 80%;
+    padding: 3px;
+}
+/*Fin del header*/
+
+/* Main Content */
+.main-container {
+    margin-top: 10vh;
+    padding: 20px;
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    background-color: var(--gris-adicional2);
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.hero-content {
+    width: 60%;
+}
+
+.hero-content h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.hero-btn {
+    background-color: var(--color-botones);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero-btn:hover {
+    background-color: #0066b3;
+}
+
+.hero-image {
+    width: 35%;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.feature-card {
+    background-color: var(--color-botones2);
+    padding: 25px;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-icon {
+    font-size: 36px;
+    margin-bottom: 15px;
+    color: var(--color-botones);
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    opacity: 0.8;
+    font-size: 14px;
+}
+
+/* Recent Activity Section */
+.recent-activity {
+    background-color: var(--gris-adicional);
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.recent-activity h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-item {
+    display: flex;
+    background-color: var(--gris-adicional2);
+    padding: 15px;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.activity-icon {
+    margin-right: 15px;
+    background-color: var(--color-botones);
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.activity-content {
+    flex-grow: 1;
+}
+
+.activity-title {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.activity-info {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.activity-time {
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--gris-adicional);
+    padding: 20px;
+    text-align: center;
+    margin-top: 30px;
+    border-radius: 15px 15px 0 0;
+}
+
+.footer p {
+    opacity: 0.7;
+    font-size: 14px;
+}

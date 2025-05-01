@@ -1,0 +1,711 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --fondo: #1f2831;
+    --color-botones: #0078d4;
+    --color-botones2: #2e3c47;
+    --gris-adicional: #273940;
+    --gris-adicional2: #3a4a56;
+    --fuente: "Poppins", sans-serif;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/*Inicio del header*/
+.containertop {
+    width: 100%;
+    height: 10%;
+    background-color: var(--gris-adicional); /* Color con opacidad */
+    display: flex;
+    position: fixed; /* Fijar en la parte superior */
+    top: 0; /* Asegura que esté arriba */
+    left: 0;
+    z-index: 1000; /* Que esté por encima de todo */
+    backdrop-filter: blur(40px); /* (opcional) efecto moderno de desenfoque */
+}
+
+.containertoplogo {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    
+}
+
+.logoskill {
+   width: 18%;
+}
+
+.nameskill {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    align-self: center;
+    font-size: 20px;
+    font-family: var(--fuente);
+}
+
+.containertopcenter {
+    width: 8%;
+    height: 10vh;
+}
+
+.containertopnav {
+    width: 62%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #00000000;
+}
+
+.navbutton {
+    text-decoration: none;
+    background-color: #00000000;
+    color: white;
+    font-size: 20px;
+    border-style: none;
+    width: auto;
+    height: 100%;
+    margin-left: 5px;
+    padding: 12px;
+    border-radius: 15px;
+    transition: 0.5s;
+}
+
+.navbutton:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.profilesection {
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 100%;
+}
+
+.profilesection img {
+    width: 80%;
+    height: 80%;
+    padding: 3px;
+}
+
+/*Fin del header*/
+
+/*Contenedores parte inferior*/
+.container {
+    width: 100%;
+    height: 90vh;
+}
+
+.containerdown {
+    width: 100%;
+    height: calc(100vh - 12vh);
+    background-color: var(--fondo);
+    display: flex;
+} 
+
+.containerdownleft {
+    width: 27.5%;
+    height: 90%;
+    background-color: var(--fondo);
+    overflow-y: auto;
+}
+.containerdowncenter {
+    width: 47.5%;
+    height: 100%;
+    border-radius: 5% 5% 0 0;
+    background-color: var(--fondo2);
+    overflow-y: auto;
+}
+.containerdownright {
+    width: 25%;
+    height: 100%;
+    background-color: var(--fondo);
+    overflow-y: auto;
+}
+
+.headerdown {
+    margin-top: 10vh;
+    width: 100%;
+    height: 2vh;
+    background-color: var(--fondo);
+}
+/*Fin contenedores parte inferior*/
+
+/* Estilo del scrollbar para Webkit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px;               /* delgado */
+    background: transparent;  /* invisible cuando no se usa */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;  /* sin fondo */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(142, 154, 173, 0.3); /* gris azulado semi-transparente */
+    border-radius: 10px;
+    transition: background-color 2s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(207, 216, 220, 0.7); /* se ilumina un poco al pasar el mouse */
+  }
+/*Fin de estilos de scrollbar*/
+/*Header de la parte de chats*/
+
+/*Fin del header de la parte de chats*/
+/*Sección en la que aparecen las personas para elegir un chat*/
+
+
+.peopleconteiner {
+    width: 100%;
+    height: 10%;
+    display: flex;
+}
+
+.profilephotop {
+    width: 20%;
+    height: 100%;
+    margin-left: 3px;
+    justify-content: center;
+    align-content: center;
+}
+.profilephotop img {
+    width: 90%;
+    height: 90%;
+}
+
+.textp {
+    width: 80%;
+    height: 100%;
+    justify-self: right;
+}
+
+.namep {
+    width: 100%;
+    height: 50%;
+    font-size: 7px;
+    font-family: var(--fuente);
+    align-content: center;
+    color: white;
+}
+
+.messagep {
+    width: 80%;
+    height: 50%;
+    font-size: 12px;
+    font-family: var(--fuente);
+    margin-top: -30px;
+    color: white;
+    /* Propiedades para el truncamiento con ellipsis después de dos líneas */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;           /* Número de líneas antes de truncar */
+    -webkit-box-orient: vertical;
+    overflow: hidden;                /* Oculta el contenido que desborda */
+    text-overflow: ellipsis;         /* Muestra los puntos suspensivos */
+    max-width: 100%;                 /* Asegura que el contenedor no se extienda */
+    line-height: 1.2;                /* Ajusta el interlineado para mejor visualización */
+}
+
+.separatorp {
+    width: 98%;
+    height: 2px;
+    background-color: var(--fondo2);
+    border-radius: 50px;
+    justify-self: center;
+}
+
+.peopleconteiner button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: -10px;
+}
+
+.top-tools {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+#searchInput {
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 90%;
+    font-family: var(--fuente);
+}
+
+.filters {
+    display: flex;
+    justify-content: center; /* Centra los íconos horizontalmente */
+    align-items: center;     /* Centra los íconos verticalmente (opcional) */
+    gap: 10px;               /* Espacio entre los botones (opcional) */
+}
+
+.filters button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background-color: #2e3c47;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: var(--fuente);
+}
+
+.filters button:hover {
+    background-color: #ffffff;
+    color: #000;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* Colores al estar activado */
+.activo-pin svg {
+    stroke: red;
+}
+
+.activo-fav svg {
+    stroke: gold;
+}
+
+/* Estilos para el área de chat */
+.chat-header {
+    background-color: #2e3c47;
+    padding: 10px;
+    border-radius: 15px 15px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.chat-contact {
+    display: flex;
+    align-items: center;
+}
+
+.contact-photo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.contact-photo img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.contact-info h2 {
+    margin: 0;
+    color: white;
+    font-size: 18px;
+    font-family: var(--fuente);
+}
+
+.contact-status {
+    margin: 0;
+    color: #8eacbb;
+    font-size: 12px;
+    font-family: var(--fuente);
+}
+
+.chat-messages {
+    padding: 15px;
+    height: calc(100% - 130px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    font-family: var(--fuente);
+    position: relative;
+    word-wrap: break-word;
+}
+
+.message-sent {
+    background-color: var(--color-botones);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+}
+
+.message-received {
+    background-color: #3a4a56;
+    color: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+}
+
+.message-time {
+    font-size: 10px;
+    opacity: 0.7;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.message-info {
+    text-align: center;
+    color: #8eacbb;
+    font-family: var(--fuente);
+    margin: 20px 0;
+}
+
+.chat-input-area {
+    position: sticky;
+    bottom: 0;
+    background-color: #2e3c47;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 0 0 15px 15px;
+}
+
+#message-input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 20px;
+    border: none;
+    background-color: #3a4a56;
+    color: white;
+    font-family: var(--fuente);
+}
+
+#message-input::placeholder {
+    color: #8eacbb;
+}
+
+#send-button {
+    background-color: var(--color-botones);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#send-button:hover {
+    background-color: #0066b3;
+}
+
+/* Hacer que los contactos sean clickeables */
+.peopleconteiner {
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.peopleconteiner:hover {
+    background-color: var(--fondo2);
+}
+
+.peopleconteiner.active {
+    background-color: #2e3c47;
+    border-left: 3px solid var(--color-botones);
+}
+
+/* Estilos para el panel de configuraciones */
+.containerdownleft {
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.settings-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: white;
+    font-family: var(--fuente);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #344149;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.status-text {
+    margin: 0;
+    font-size: 12px;
+    color: #8eacbb;
+}
+
+.settings-section {
+    margin-bottom: 20px;
+}
+
+.settings-section h4 {
+    margin: 10px 0;
+    font-size: 14px;
+    color: #8eacbb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.settings-option {
+    padding: 8px 0;
+    margin-bottom: 5px;
+}
+
+.setting-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: white;
+    padding: 8px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.setting-button:hover {
+    background-color: #344149;
+}
+
+.setting-button i {
+    margin-right: 10px;
+    color: #8eacbb;
+}
+
+.setting-button span {
+    font-size: 14px;
+}
+
+/* Estilos para los interruptores (switches) */
+.theme-toggle, .notification-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #344149;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--color-botones);
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.theme-labels {
+    display: flex;
+    font-size: 12px;
+    color: #8eacbb;
+    margin-left: 10px;
+}
+
+.theme-dark, .theme-light {
+    margin-right: 10px;
+}
+
+.settings-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid #344149;
+}
+
+.logout {
+    color: #ff6b6b;
+}
+
+.logout i {
+    color: #ff6b6b;
+}
+
+/* Estilos para las categorías de chat */
+.chat-categories {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #344149;
+}
+
+.chat-categories h3 {
+    margin: 0 0 10px 0;
+    color: white;
+    font-size: 16px;
+    font-family: var(--fuente);
+}
+
+.category-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.category-tab {
+    padding: 5px 10px;
+    background-color: #344149;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: var(--fuente);
+    transition: background-color 0.3s;
+}
+
+.category-tab:hover {
+    background-color: var(--color-botones);
+}
+
+.category-tab.active {
+    background-color: var(--color-botones);
+}
+
+/* Estilos para los botones de multimedia */
+.media-buttons {
+    display: flex;
+    gap: 10px;
+    margin-right: 10px;
+}
+
+.media-buttons button {
+    background: none;
+    border: none;
+    color: #8eacbb;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.media-buttons button:hover {
+    background-color: #344149;
+    color: white;
+}
+
+/* Estilos para los mensajes con archivos multimedia */
+.message-media {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.message-file {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: #344149;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.message-file i {
+    margin-right: 10px;
+}
+
+.message-file-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.message-audio {
+    width: 100%;
+    max-width: 250px;
+}
+
+.message-video {
+    width: 100%;
+    max-width: 250px;
+    max-height: 150px;
+    border-radius: 10px;
+}

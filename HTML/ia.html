@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSpire - Asistente IA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --fondo: #1f2831;
+            --color-botones: #0078d4;
+            --color-botones2: #2e3c47;
+            --gris-adicional: #273940;
+            --gris-adicional2: #3a4a56;
+            --fuente: "Poppins", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fuente);
+            background-color: var(--fondo);
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /*Inicio del header*/
+        .containertop {
+            width: 100%;
+            height: 10%;
+            background-color: #273940; /* Color con opacidad */
+            display: flex;
+            position: fixed; /* Fijar en la parte superior */
+            top: 0; /* Asegura que esté arriba */
+            left: 0;
+            z-index: 1000; /* Que esté por encima de todo */
+            backdrop-filter: blur(40px); /* (opcional) efecto moderno de desenfoque */
+        }
+        .containertoplogo {
+            width: 30%;
+            height: 10vh;
+            display: flex;
+        }
+        .logoskill {
+           width: 18%;
+        }
+        .nameskill {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            align-self: center;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+        }
+        .containertopcenter {
+            width: 8%;
+            height: 10vh;
+        }
+        .containertopnav {
+            width: 62%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: #00000000;
+        }
+        .navbutton {
+            text-decoration: none;
+            background-color: #00000000;
+            color: white;
+            font-size: 20px;
+            border-style: none;
+            width: auto;
+            height: 100%;
+            margin-left: 5px;
+            padding: 12px;
+            border-radius: 15px;
+            transition: 0.5s;
+        }
+        .navbutton:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+        .profilesection {
+            align-items: center;
+            justify-content: center;
+            width: 10%;
+            height: 100%;
+        }
+        .profilesection img {
+            width: 80%;
+            height: 80%;
+            padding: 3px;
+        }
+        /*Fin del header*/
+
+        /* Contenido principal */
+        .main-container {
+            margin-top: 10vh;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            height: calc(100vh - 10vh);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+            padding: 20px;
+            margin-right: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .new-chat-btn {
+            background-color: var(--color-botones);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .new-chat-btn:hover {
+            background-color: #0060a8;
+        }
+
+        .chat-history {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .chat-item {
+            padding: 12px;
+            margin-bottom: 8px;
+            background-color: var(--gris-adicional2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .chat-item:hover {
+            background-color: var(--color-botones2);
+        }
+
+        /* Área principal del chat */
+        .chat-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            padding: 20px;
+            background-color: var(--gris-adicional2);
+            display: flex;
+            align-items: center;
+        }
+
+        .ai-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 12px;
+        }
+
+        .chat-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            line-height: 1.5;
+        }
+
+        .user-message {
+            background-color: var(--color-botones);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .ai-message {
+            background-color: var(--gris-adicional2);
+            color: white;
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-input-container {
+            padding: 20px;
+            background-color: var(--gris-adicional2);
+            display: flex;
+            align-items: center;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            background-color: var(--gris-adicional);
+            color: white;
+            font-family: var(--fuente);
+            resize: none;
+            overflow-y: auto;
+            height: 55px;
+            max-height: 120px;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--color-botones);
+        }
+
+        .send-btn {
+            background-color: var(--color-botones);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .send-btn:hover {
+            background-color: #0060a8;
+        }
+
+        /* Info panel */
+        .info-panel {
+            width: 280px;
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+            padding: 20px;
+            margin-left: 20px;
+        }
+
+        .info-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .info-section {
+            margin-bottom: 20px;
+        }
+
+        .info-subtitle {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #e0e0e0;
+        }
+
+        .info-content {
+            font-size: 12px;
+            color: #b0b0b0;
+            line-height: 1.5;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--gris-adicional2);
+            padding: 5px 10px;
+            border-radius: 15px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+
+        .help-box {
+            margin-top: 0px;
+            padding: 20px;
+            background-color: rgba(167, 242, 235, 0.2);
+            border-radius: 10px;
+            border: 1px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 40%;
+            align-self: center;
+            margin-left: 6%;
+        }
+        
+        .help-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .help-text {
+            flex: 1;
+        }
+        
+        .help-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .help-button {
+            background-color: var(--color-botones2);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .help-button:hover {
+            background-color: var(--gris-adicional);
+        }
+
+        .helps {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .info-panel {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            
+            .main-container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar con historial de chats -->
+        <div class="sidebar">
+            <h2 class="sidebar-title">Conversaciones</h2>
+            <button class="new-chat-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" style="margin-right: 8px;" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg>
+                Nueva conversación
+            </button>
+            
+            <div class="chat-history">
+                <div class="chat-item">Ayuda con ecuaciones de segundo grado</div>
+                <div class="chat-item">Resumen de historia del arte</div>
+                <div class="chat-item">Dudas de biología celular</div>
+                <div class="chat-item">Preparación para examen de física</div>
+                <div class="chat-item">Ejercicios de inglés avanzado</div>
+                <div class="chat-item">Análisis literario Shakespeare</div>
+            </div>
+        </div>
+
+        <!-- Área principal del chat -->
+        <div class="chat-area">
+            <div class="chat-header">
+                <img src="../images/th.jpeg" alt="IA Avatar" class="ai-avatar">
+                <div class="chat-title">SpireAI - Tu asistente de aprendizaje</div>
+            </div>
+
+            <div class="chat-messages">
+                <div class="message ai-message">
+                    ¡Hola! Soy SpireAI, tu asistente personal de aprendizaje. Estoy aquí para ayudarte con tus estudios, responder preguntas y guiarte en tu proceso educativo. ¿En qué puedo ayudarte hoy?
+                </div>
+                
+                <div class="message user-message">
+                    Necesito ayuda para entender el tema de derivadas en cálculo.
+                </div>
+                
+                <div class="message ai-message">
+                    ¡Claro! Las derivadas son un concepto fundamental del cálculo que nos permite medir la tasa de cambio instantánea de una función.
+                    
+                    Pensemos en esto de manera intuitiva: si tienes una gráfica que representa la posición de un objeto en el tiempo, la derivada te dice la velocidad de ese objeto en cualquier punto.
+                    
+                    ¿Te gustaría que comencemos con los conceptos básicos o hay algo específico sobre derivadas que te esté causando dificultad?
+                </div>
+                
+                <div class="message user-message">
+                    Me confunden las reglas de derivación, especialmente la regla de la cadena.
+                </div>
+                
+                <div class="message ai-message">
+                    Entiendo, la regla de la cadena puede ser complicada al principio. 
+                    
+                    La regla de la cadena se usa cuando tienes una función compuesta, es decir, una función dentro de otra función. Matemáticamente, si tienes f(g(x)), la derivada sería f'(g(x)) · g'(x).
+                    
+                    Piensa en ello como una cadena de cambios: primero calculas cómo cambia la función externa con respecto a la interna, y luego lo multiplicas por cómo cambia la función interna con respecto a x.
+                    
+                    ¿Te ayudaría si trabajamos con un ejemplo específico?
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <textarea class="chat-input" placeholder="Escribe tu mensaje aquí..."></textarea>
+                <button class="send-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Panel de información -->
+        <div class="info-panel">
+            <h2 class="info-title">Información</h2>
+            
+            <div class="info-section">
+                <h3 class="info-subtitle">Sobre esta conversación</h3>
+                <p class="info-content">
+                    Estás hablando con SpireAI, el asistente inteligente de SkillSpire. Puedo ayudarte con tus estudios y resolver dudas sobre cualquier materia académica.
+                </p>
+            </div>
+            
+            <div class="info-section">
+                <h3 class="info-subtitle">Temas actuales</h3>
+                <div>
+                    <span class="tag">Cálculo</span>
+                    <span class="tag">Derivadas</span>
+                    <span class="tag">Matemáticas</span>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3 class="info-subtitle">Recursos recomendados</h3>
+                <p class="info-content">
+                    • Lección 4.3: Reglas de derivación<br>
+                    • Video: Aplicaciones de derivadas<br>
+                    • Ejercicios prácticos de cálculo
+                </p>
+            </div>
+            
+            <div class="info-section">
+                <h3 class="info-subtitle">Sugerencias</h3>
+                <p class="info-content">
+                    • Pide explicaciones paso a paso<br>
+                    • Solicita ejemplos prácticos<br>
+                    • Usa la función de ejercicios para practicar
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="helps">
+        <div class="help-box">
+            <div class="help-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+            </div>
+            <div class="help-text">
+                <h3>¿Quieres hacer una búsqueda con IA?</h3>
+                <p>Haz click en el siguiente botón para acceder a esta función.</p>
+            </div>
+            <a href="busqia.html">
+                <button class="help-button">Búsqueda con IA</button>
+            </a>
+        </div>
+        <div class="help-box">
+            <div class="help-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+            </div>
+            <div class="help-text">
+                <h3>¿Buscas recomendaciones de aprendizaje?</h3>
+                <p>Haz click en el siguiente botón para acceder a ellas.</p>
+            </div>
+            <a href="recomend.html">
+                <button class="help-button">Recomendaciones</button>
+            </a>
+        </div>
+    </div>
+    <script>
+        // Ajustar altura del textarea automáticamente
+        const chatInput = document.querySelector('.chat-input');
+        
+        chatInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            
+            // Limitar la altura máxima
+            if (this.scrollHeight > 120) {
+                this.style.height = '120px';
+            }
+        });
+        
+        // Simular envío de mensaje
+        const sendBtn = document.querySelector('.send-btn');
+        const chatMessages = document.querySelector('.chat-messages');
+        
+        sendBtn.addEventListener('click', function() {
+            if (chatInput.value.trim() !== '') {
+                // Crear mensaje del usuario
+                const userMessage = document.createElement('div');
+                userMessage.className = 'message user-message';
+                userMessage.textContent = chatInput.value;
+                chatMessages.appendChild(userMessage);
+                
+                // Limpiar input
+                chatInput.value = '';
+                chatInput.style.height = '55px';
+                
+                // Scroll al final
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Simular respuesta de la IA (en una aplicación real, esto sería una llamada a la API)
+                setTimeout(() => {
+                    const aiMessage = document.createElement('div');
+                    aiMessage.className = 'message ai-message';
+                    aiMessage.textContent = 'Estoy procesando tu consulta. Te responderé en un momento...';
+                    chatMessages.appendChild(aiMessage);
+                    
+                    // Scroll al final
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 500);
+            }
+        });
+        
+        // Permitir enviar con Enter (Shift+Enter para nueva línea)
+        chatInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>

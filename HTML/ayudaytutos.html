@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Ayuda y Tutoriales - SkillSpire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Colores principales */
+            --primary-color: #273940;
+            --secondary-color: #5A6E73;
+            --accent-color: #34495e;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --text-light: #999;
+            --background-light: #f5f7fa;
+            --white: #ffffff;
+            
+            /* Sombras */
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 15px rgba(0,0,0,0.1);
+            --shadow-lg: 0 8px 20px rgba(0,0,0,0.15);
+            
+            /* Espaciado */
+            --spacing-xs: 5px;
+            --spacing-sm: 10px;
+            --spacing-md: 15px;
+            --spacing-lg: 20px;
+            --spacing-xl: 30px;
+            --spacing-xxl: 40px;
+            
+            /* Bordes */
+            --border-radius-sm: 10px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 15px;
+            --border-radius-xl: 30px;
+            
+            /* Tipografía */
+            --font-family: "Poppins", sans-serif;
+            --font-size-xs: 12px;
+            --font-size-sm: 14px;
+            --font-size-md: 16px;
+            --font-size-lg: 18px;
+            --font-size-xl: 20px;
+            --font-size-xxl: 24px;
+            --font-size-xxxl: 32px;
+            
+            /* Transiciones */
+            --transition-fast: 0.3s;
+            --transition-normal: 0.5s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-family);
+        }
+        
+        body {
+            background-color: var(--secondary-color);
+            min-height: 100vh;
+        }
+        
+        .containertop {
+            width: 100%;
+            height: 10%;
+            background-color: var(--primary-color);
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(40px);
+        }
+        
+        .containertoplogo {
+            width: 30%;
+            height: 10vh;
+            display: flex;
+        }
+        
+        .logoskill {
+           width: 18%;
+        }
+        
+        .nameskill {
+            color: var(--white);
+            align-self: center;
+            font-size: var(--font-size-xl);
+            font-family: var(--font-family);
+        }
+        
+        .containertopcenter {
+            width: 8%;
+            height: 10vh;
+        }
+        
+        .containertopnav {
+            width: 70%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: #00000000;
+        }
+        
+        .navbutton {
+            text-decoration: none;
+            background-color: #00000000;
+            color: var(--white);
+            font-size: var(--font-size-xl);
+            border-style: none;
+            width: auto;
+            height: 100%;
+            margin-left: var(--spacing-xs);
+            padding: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            transition: var(--transition-normal);
+        }
+        
+        .navbutton:hover {
+            background-color: var(--white);
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+        
+        .profilesection {
+            align-items: center;
+            justify-content: center;
+            width: 10%;
+            height: 100%;
+        }
+        
+        .profilesection img {
+            width: 80%;
+            height: 80%;
+            padding: 3px;
+        }
+        
+        /* Nuevos estilos para la sección de ayuda y tutoriales */
+        .main-container {
+            padding-top: 15vh;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .help-header {
+            padding: var(--spacing-xl);
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .help-header h2 {
+            font-size: var(--font-size-xxxl);
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .help-header p {
+            color: var(--primary-color);
+            font-size: var(--font-size-lg);
+        }
+
+        .search-bar {
+            max-width: 600px;
+            margin: 0 auto var(--spacing-xxl);
+            position: relative;
+        }
+        
+        .search-bar input {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-xl) var(--spacing-md) 50px;
+            border-radius: var(--border-radius-xl);
+            border: 1px solid #ddd;
+            font-size: var(--font-size-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .search-bar::before {
+            content: "🔍";
+            position: absolute;
+            left: 20px;
+            top: 15px;
+            font-size: var(--font-size-lg);
+        }
+        
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+        }
+        
+        .category-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-md);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .category-icon {
+            font-size: 40px;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .category-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .category-desc {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .tutorial-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        .section-title {
+            font-size: var(--font-size-xxl);
+            color: var(--primary-color);
+        }
+        
+        .view-all {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .tutorials {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+        }
+        
+        .tutorial-card {
+            border: 1px solid #eee;
+            border-radius: var(--border-radius-sm);
+            overflow: hidden;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+        
+        .tutorial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .tutorial-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background-color: #f2f2f2;
+        }
+        
+        .tutorial-content {
+            padding: var(--spacing-md);
+        }
+        
+        .tutorial-title {
+            font-size: var(--font-size-md);
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .tutorial-desc {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .tutorial-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: var(--font-size-xs);
+            color: var(--text-light);
+        }
+        
+        .faq-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: var(--spacing-md) 0;
+        }
+        
+        .faq-question {
+            font-size: var(--font-size-md);
+            font-weight: 500;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question::after {
+            content: "+";
+            font-size: var(--font-size-xl);
+        }
+        
+        .faq-question.open::after {
+            content: "-";
+        }
+        
+        .faq-answer {
+            padding-top: var(--spacing-md);
+            display: none;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Estilo para la sección activa de la barra de navegación */
+        .navbutton.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .support-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-xl);
+            text-align: center;
+            color: var(--white);
+            margin-bottom: var(--spacing-xxl);
+        }
+        
+        .support-banner h3 {
+            font-size: var(--font-size-xxl);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .support-banner p {
+            margin-bottom: var(--spacing-xl);
+            font-size: var(--font-size-md);
+        }
+        
+        .contact-btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: none;
+            padding: var(--spacing-sm) var(--spacing-xl);
+            border-radius: var(--border-radius-xl);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color var(--transition-fast);
+        }
+        
+        .contact-btn:hover {
+            background-color: #eaeaea;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: var(--spacing-xl) 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: var(--spacing-xl);
+            padding: 0 var(--spacing-md);
+            text-align: left;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-lg);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--white);
+        }
+        
+        .copyright {
+            width: 100%;
+            text-align: center;
+            padding-top: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: var(--font-size-sm);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="help-header">
+            <h2>Centro de Ayuda y Tutoriales</h2>
+            <p>Descubre recursos para sacar el máximo provecho de SkillSpire</p>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Busca ayuda o tutoriales...">
+        </div>
+
+        <div class="categories">
+            <div class="category-card">
+                <div class="category-icon">📚</div>
+                <h3 class="category-title">Primeros pasos</h3>
+                <p class="category-desc">Guías para comenzar a usar SkillSpire correctamente</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">📊</div>
+                <h3 class="category-title">Gestión de contenidos</h3>
+                <p class="category-desc">Aprende a organizar y acceder a los contenidos</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💬</div>
+                <h3 class="category-title">Chats y comunicación</h3>
+                <p class="category-desc">Cómo usar las herramientas de comunicación</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🤖</div>
+                <h3 class="category-title">Uso de la IA</h3>
+                <p class="category-desc">Maximiza el potencial de nuestras herramientas de IA</p>
+            </div>
+        </div>
+
+        <div class="tutorial-section">
+            <div class="section-header">
+                <h3 class="section-title">Tutoriales destacados</h3>
+                <a href="#" class="view-all">Ver todos</a>
+            </div>
+            <div class="tutorials">
+                <div class="tutorial-card">
+                    <img src="/api/placeholder/300/150" alt="Tutorial de inicio rápido" class="tutorial-img">
+                    <div class="tutorial-content">
+                        <h4 class="tutorial-title">Guía de inicio rápido</h4>
+                        <p class="tutorial-desc">Todo lo que necesitas saber para empezar a usar SkillSpire en minutos.</p>
+                        <div class="tutorial-meta">
+                            <span>5 min de lectura</span>
+                            <span>Básico</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tutorial-card">
+                    <img src="/api/placeholder/300/150" alt="Tutorial de gestión de contenidos" class="tutorial-img">
+                    <div class="tutorial-content">
+                        <h4 class="tutorial-title">Gestión eficiente de contenidos</h4>
+                        <p class="tutorial-desc">Aprende a organizar y encontrar rápidamente lo que necesitas.</p>
+                        <div class="tutorial-meta">
+                            <span>8 min de lectura</span>
+                            <span>Intermedio</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tutorial-card">
+                    <img src="/api/placeholder/300/150" alt="Tutorial de chats colaborativos" class="tutorial-img">
+                    <div class="tutorial-content">
+                        <h4 class="tutorial-title">Chats colaborativos</h4>
+                        <p class="tutorial-desc">Maximiza la productividad con las funciones de chat grupal.</p>
+                        <div class="tutorial-meta">
+                            <span>6 min de lectura</span>
+                            <span>Intermedio</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-section">
+            <div class="section-header">
+                <h3 class="section-title">Preguntas frecuentes</h3>
+                <a href="#" class="view-all">Ver todas</a>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">¿Cómo puedo cambiar mi contraseña?</div>
+                    <div class="faq-answer">Para cambiar tu contraseña, ve a tu perfil haciendo clic en tu imagen de perfil en la esquina superior derecha. Luego selecciona "Configuración de cuenta" y en la sección "Seguridad" encontrarás la opción para cambiar tu contraseña.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Cómo puedo compartir contenido con otros usuarios?</div>
+                    <div class="faq-answer">Para compartir contenido, busca el botón "Compartir" que aparece en cada elemento de contenido. Puedes compartir por correo electrónico, generar un enlace o compartir directamente con usuarios específicos de la plataforma.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Qué hacer si tengo problemas para acceder a ciertos contenidos?</div>
+                    <div class="faq-answer">Si tienes problemas para acceder a algún contenido, primero verifica tu conexión a internet. Si el problema persiste, podría deberse a permisos de acceso. Contacta con tu administrador o con nuestro soporte técnico para resolver el problema.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Cómo utilizo la función de IA para mejorar mi aprendizaje?</div>
+                    <div class="faq-answer">Nuestra herramienta de IA puede ayudarte de varias formas: resumiendo contenidos extensos, recomendando recursos basados en tu historial de aprendizaje, respondiendo preguntas específicas sobre los temas que estás estudiando, y creando cuestionarios personalizados para evaluar tu comprensión.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="support-banner">
+            <h3>¿Necesitas ayuda adicional?</h3>
+            <p>Nuestro equipo de soporte está disponible para ayudarte con cualquier duda o problema que puedas tener.</p>
+            <button class="contact-btn">Contactar a soporte</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SkillSpire</h4>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Carreras</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Centro de ayuda</a></li>
+                    <li><a href="#">Tutoriales</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Soporte técnico</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 SkillSpire. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Script para manejar las preguntas frecuentes
+        const questions = document.querySelectorAll('.faq-question');
+        
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                
+                // Alternar visibilidad de la respuesta
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    question.style.fontWeight = '500';
+                    question.style.color = 'var(--primary-color)';
+                    question.classList.remove('open');
+                } else {
+                    answer.style.display = 'block';
+                    question.style.fontWeight = '600';
+                    question.style.color = 'var(--secondary-color)';
+                    question.classList.add('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

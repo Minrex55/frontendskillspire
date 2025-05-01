@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSpire - Sistema de Calificaciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --fondo: #1f2831;
+            --color-botones: #0078d4;
+            --color-botones2: #2e3c47;
+            --gris-adicional: #273940;
+            --gris-adicional2: #3a4a56;
+            --fuente: "Poppins", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--fuente);
+        }
+
+        body {
+            background-color: var(--fondo);
+            color: white;
+            min-height: 100vh;
+            padding-top: 10vh;
+        }
+
+        /*Inicio del header*/
+        .containertop {
+            width: 100%;
+            height: 10%;
+            background-color: #273940; /* Color con opacidad */
+            display: flex;
+            position: fixed; /* Fijar en la parte superior */
+            top: 0; /* Asegura que esté arriba */
+            left: 0;
+            z-index: 1000; /* Que esté por encima de todo */
+            backdrop-filter: blur(40px); /* (opcional) efecto moderno de desenfoque */
+        }
+        .containertoplogo {
+            width: 30%;
+            height: 10vh;
+            display: flex;
+        }
+        .logoskill {
+           width: 18%;
+        }
+        .nameskill {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            align-self: center;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+        }
+        .containertopcenter {
+            width: 8%;
+            height: 10vh;
+        }
+        .containertopnav {
+            width: 62%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: #00000000;
+        }
+        .navbutton {
+            text-decoration: none;
+            background-color: #00000000;
+            color: white;
+            font-size: 20px;
+            border-style: none;
+            width: auto;
+            height: 100%;
+            margin-left: 5px;
+            padding: 12px;
+            border-radius: 15px;
+            transition: 0.5s;
+        }
+        .navbutton:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+        .profilesection {
+            align-items: center;
+            justify-content: center;
+            width: 10%;
+            height: 100%;
+        }
+        .profilesection img {
+            width: 80%;
+            height: 80%;
+            padding: 3px;
+        }
+        /*Fin del header*/
+
+        /* Inicio del contenido principal - Sistema de Calificaciones */
+        .main-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .grades-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .grades-title {
+            font-size: 2rem;
+            font-weight: 600;
+        }
+
+        .search-filter-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: none;
+            background-color: var(--gris-adicional2);
+            color: white;
+            font-size: 16px;
+        }
+
+        .search-input::placeholder {
+            color: #ccc;
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: none;
+            background-color: var(--gris-adicional2);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .filter-select option {
+            background-color: var(--gris-adicional);
+            color: white;
+        }
+
+        .action-btn {
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: none;
+            background-color: var(--color-botones);
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .action-btn:hover {
+            background-color: #0263ae;
+        }
+
+        .secondary-btn {
+            background-color: var(--color-botones2);
+        }
+
+        .secondary-btn:hover {
+            background-color: #3a4e5d;
+        }
+
+        /* Tabla de estudiantes */
+        .students-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .students-table th, .students-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .students-table th {
+            background-color: var(--gris-adicional2);
+            font-weight: 600;
+        }
+
+        .students-table tbody tr {
+            transition: background-color 0.3s;
+        }
+
+        .students-table tbody tr:hover {
+            background-color: var(--gris-adicional2);
+        }
+
+        .grade-input {
+            width: 80px;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid var(--gris-adicional2);
+            background-color: var(--gris-adicional);
+            color: white;
+            text-align: center;
+        }
+
+        .action-icon {
+            cursor: pointer;
+            margin: 0 5px;
+            color: var(--color-botones);
+            transition: color 0.3s;
+        }
+
+        .action-icon:hover {
+            color: #0263ae;
+        }
+
+        .delete-icon {
+            color: #e74c3c;
+        }
+
+        .delete-icon:hover {
+            color: #c0392b;
+        }
+
+        /* Modal de edición */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--gris-adicional);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background-color: var(--gris-adicional2);
+            color: white;
+            font-size: 16px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Paginación */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 0.5rem;
+        }
+
+        .page-btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: none;
+            background-color: var(--gris-adicional2);
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background-color: var(--color-botones);
+        }
+
+        .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .search-filter-container {
+                flex-direction: column;
+            }
+
+            .filter-container {
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .students-table {
+                font-size: 14px;
+            }
+
+            .students-table th, .students-table td {
+                padding: 10px;
+            }
+
+            .grade-input {
+                width: 60px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .grades-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .filter-container {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .filter-select {
+                width: 100%;
+            }
+
+            .action-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="grades-header">
+            <h2 class="grades-title">Sistema de Calificaciones</h2>
+            <button class="action-btn" id="add-student-btn">Agregar Estudiante</button>
+        </div>
+
+        <div class="search-filter-container">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Buscar estudiante...">
+            </div>
+            <div class="filter-container">
+                <select class="filter-select">
+                    <option value="">Todos los grupos</option>
+                    <option value="1A">Grupo 1A</option>
+                    <option value="1B">Grupo 1B</option>
+                    <option value="2A">Grupo 2A</option>
+                    <option value="2B">Grupo 2B</option>
+                </select>
+                <select class="filter-select">
+                    <option value="">Todas las materias</option>
+                    <option value="matematicas">Matemáticas</option>
+                    <option value="lenguaje">Lenguaje</option>
+                    <option value="ciencias">Ciencias</option>
+                    <option value="sociales">Sociales</option>
+                </select>
+                <button class="action-btn secondary-btn">Filtrar</button>
+            </div>
+        </div>
+
+        <table class="students-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Grupo</th>
+                    <th>Materia</th>
+                    <th>Calificación</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1001</td>
+                    <td>Ana María Rodríguez</td>
+                    <td>1A</td>
+                    <td>Matemáticas</td>
+                    <td>
+                        <input type="number" class="grade-input" value="4.5" min="0" max="5" step="0.1">
+                    </td>
+                    <td>
+                        <button class="action-btn secondary-btn edit-btn">Editar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1002</td>
+                    <td>Juan Carlos Méndez</td>
+                    <td>1A</td>
+                    <td>Matemáticas</td>
+                    <td>
+                        <input type="number" class="grade-input" value="3.8" min="0" max="5" step="0.1">
+                    </td>
+                    <td>
+                        <button class="action-btn secondary-btn edit-btn">Editar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1003</td>
+                    <td>María Fernanda Parra</td>
+                    <td>1B</td>
+                    <td>Lenguaje</td>
+                    <td>
+                        <input type="number" class="grade-input" value="4.2" min="0" max="5" step="0.1">
+                    </td>
+                    <td>
+                        <button class="action-btn secondary-btn edit-btn">Editar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1004</td>
+                    <td>Diego Alejandro Ramírez</td>
+                    <td>2A</td>
+                    <td>Ciencias</td>
+                    <td>
+                        <input type="number" class="grade-input" value="4.7" min="0" max="5" step="0.1">
+                    </td>
+                    <td>
+                        <button class="action-btn secondary-btn edit-btn">Editar</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1005</td>
+                    <td>Sofía Catalina Gómez</td>
+                    <td>2B</td>
+                    <td>Sociales</td>
+                    <td>
+                        <input type="number" class="grade-input" value="3.5" min="0" max="5" step="0.1">
+                    </td>
+                    <td>
+                        <button class="action-btn secondary-btn edit-btn">Editar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <button class="page-btn disabled">Anterior</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">Siguiente</button>
+        </div>
+    </main>
+
+    <!-- Modal para edición de calificaciones -->
+    <div class="modal" id="edit-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Editar Calificación</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="edit-form">
+                <div class="form-group">
+                    <label class="form-label">ID Estudiante</label>
+                    <input type="text" class="form-input" id="student-id" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Nombre</label>
+                    <input type="text" class="form-input" id="student-name" readonly>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Grupo</label>
+                    <input type="text" class="form-input" id="student-group">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Materia</label>
+                    <select class="form-input" id="student-subject">
+                        <option value="matematicas">Matemáticas</option>
+                        <option value="lenguaje">Lenguaje</option>
+                        <option value="ciencias">Ciencias</option>
+                        <option value="sociales">Sociales</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Calificación</label>
+                    <input type="number" class="form-input" id="student-grade" min="0" max="5" step="0.1">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Observaciones</label>
+                    <textarea class="form-input" id="student-comments" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="action-btn secondary-btn cancel-btn">Cancelar</button>
+                    <button type="submit" class="action-btn">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para agregar estudiante -->
+    <div class="modal" id="add-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Agregar Estudiante</h3>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="add-form">
+                <div class="form-group">
+                    <label class="form-label">ID Estudiante</label>
+                    <input type="text" class="form-input" id="new-student-id" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-input" id="new-student-name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Grupo</label>
+                    <select class="form-input" id="new-student-group" required>
+                        <option value="">Seleccione un grupo</option>
+                        <option value="1A">Grupo 1A</option>
+                        <option value="1B">Grupo 1B</option>
+                        <option value="2A">Grupo 2A</option>
+                        <option value="2B">Grupo 2B</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Materia</label>
+                    <select class="form-input" id="new-student-subject" required>
+                        <option value="">Seleccione una materia</option>
+                        <option value="matematicas">Matemáticas</option>
+                        <option value="lenguaje">Lenguaje</option>
+                        <option value="ciencias">Ciencias</option>
+                        <option value="sociales">Sociales</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Calificación Inicial</label>
+                    <input type="number" class="form-input" id="new-student-grade" min="0" max="5" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Observaciones</label>
+                    <textarea class="form-input" id="new-student-comments" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="action-btn secondary-btn cancel-btn">Cancelar</button>
+                    <button type="submit" class="action-btn">Agregar Estudiante</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Variables para los modales
+        const editModal = document.getElementById('edit-modal');
+        const addModal = document.getElementById('add-modal');
+        const editButtons = document.querySelectorAll('.edit-btn');
+        const addButton = document.getElementById('add-student-btn');
+        const closeButtons = document.querySelectorAll('.close-btn');
+        const cancelButtons = document.querySelectorAll('.cancel-btn');
+        
+        // Abrir modal de edición
+        editButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const row = this.closest('tr');
+                const id = row.cells[0].textContent;
+                const name = row.cells[1].textContent;
+                const group = row.cells[2].textContent;
+                const subject = row.cells[3].textContent;
+                const grade = row.querySelector('.grade-input').value;
+                
+                document.getElementById('student-id').value = id;
+                document.getElementById('student-name').value = name;
+                document.getElementById('student-group').value = group;
+                
+                // Seleccionar la materia en el selector
+                const subjectSelect = document.getElementById('student-subject');
+                for (let i = 0; i < subjectSelect.options.length; i++) {
+                    if (subjectSelect.options[i].text === subject) {
+                        subjectSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+                
+                document.getElementById('student-grade').value = grade;
+                editModal.style.display = 'flex';
+            });
+        });
+        
+        // Abrir modal de agregar estudiante
+        addButton.addEventListener('click', function() {
+            addModal.style.display = 'flex';
+        });
+        
+        // Cerrar modales
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.modal').style.display = 'none';
+            });
+        });
+        
+        cancelButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.modal').style.display = 'none';
+            });
+        });
+        
+        // Cerrar modales al hacer clic fuera de ellos
+        window.addEventListener('click', function(event) {
+            if (event.target === editModal) {
+                editModal.style.display = 'none';
+            }
+            if (event.target === addModal) {
+                addModal.style.display = 'none';
+            }
+        });
+        
+        // Procesamiento de formularios
+        document.getElementById('edit-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Aquí iría la lógica para actualizar la calificación
+            // Por ahora, solo cerramos el modal
+            editModal.style.display = 'none';
+            
+            // Mostrar notificación o feedback
+            alert('Calificación actualizada correctamente');
+        });
+        
+        document.getElementById('add-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Aquí iría la lógica para agregar un estudiante
+            // Por ahora, solo cerramos el modal
+            addModal.style.display = 'none';
+            
+            // Mostrar notificación o feedback
+            alert('Estudiante agregado correctamente');
+        });
+    </script>
+</body>
+</html>

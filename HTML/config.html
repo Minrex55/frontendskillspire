@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSpire - Configuración</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/modulo7.css">
+    <link rel="stylesheet" href="../css/config.css">
+</head>
+<body>
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="config-main">
+        <section class="config-section">
+            <h2 class="config-title">Configuración de la Interfaz</h2>
+            
+            <!-- Cambio de tema -->
+            <div class="config-option theme-option">
+                <h3 class="config-subtitle">Modo de Tema</h3>
+                <label class="theme-label">
+                    <input type="radio" name="tema" value="claro" class="theme-radio">
+                    Modo Claro
+                </label><br>
+                <label class="theme-label">
+                    <input type="radio" name="tema" value="oscuro" class="theme-radio">
+                    Modo Oscuro
+                </label>
+            </div>
+    
+            <!-- Ajuste de tamaño de fuente -->
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Tamaño de Fuente</h3>
+                <label for="fuente" class="font-label">Selecciona el tamaño:</label>
+                <select id="fuente" name="fuente" class="font-select">
+                    <option value="pequeno">Pequeño</option>
+                    <option value="medio" selected>Mediano</option>
+                    <option value="grande">Grande</option>
+                </select>
+            </div>
+    
+            <!-- Colores personalizados -->
+            <div class="config-option color-option">
+                <h3 class="config-subtitle">Color de Resaltado</h3>
+                <label for="color" class="color-label">Elige un color:</label>
+                <input type="color" id="color" name="color" value="#ffcc00" class="color-picker">
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Actualizaciones</h3>
+                <label for="fuente" class="font-label"><a href="actualizaciones.html"><button class="save-button">Información de actualizaciones</button></a></label>
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Calificaciones(Solo Docentes)</h3>
+                <label for="fuente" class="font-label"><a href="calidocentes.html"><button class="save-button">Sistema de calificaciones</button></a></label>
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Check-in diario</h3>
+                <label for="fuente" class="font-label"><a href="checkin.html"><button class="save-button">Haz check-in</button></a></label>
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Gestión de contenidos(Solo docentes)</h3>
+                <label for="fuente" class="font-label"><a href="contedocentes.html"><button class="save-button">Gestión de contenidos educativos</button></a></label>
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Exportar datos de materias(Docentes)</h3>
+                <label for="fuente" class="font-label"><a href="exportdatos.html"><button class="save-button">Exportar datos</button></a></label>
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Informes académicos(Docentes)</h3>
+                <label for="fuente" class="font-label"><a href="informesacademicos.html"><button class="save-button">Generar informes académicos</button></a></label>
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Informes asistencia(Docentes)</h3>
+                <label for="fuente" class="font-label"><a href="informesasis.html"><button class="save-button">Generar informes de asistencia</button></a></label>
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Informes calificaciones(Docentes)</h3>
+                <label for="fuente" class="font-label"><a href="informescali.html"><button class="save-button">Generar informes de calificaciones</button></a></label>
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Integración de herramientas educativas</h3>
+                <label for="fuente" class="font-label"><a href="integracion.html"><button class="save-button">Integrar herramientas educativas</button></a></label>
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Zona de padres(solo padres)</h3>
+                <label for="fuente" class="font-label"><a href="padres.html"><button class="save-button">Padres</button></a></label>
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Proceso académico</h3>
+                <label for="fuente" class="font-label"><a href="proceacademico.html"><button class="save-button">Consultar proceso académico</button></a></label>
+            </div>
+
+            <div class="config-option font-option">
+                <h3 class="config-subtitle">Rúbricas de evaluación(Solo docentes)</h3>
+                <label for="fuente" class="font-label"><a href="rubricas.html"><button class="save-button">Crear rúbricas de evaluación</button></a></label>
+            </div>
+    
+            <!-- Botón para guardar configuraciones -->
+            <div class="config-option save-option">
+                <button type="submit" class="save-button">Guardar Cambios</button>
+            </div>
+        </section>
+    </main>
+    <!-- Selección de idioma -->
+<div class="config-option language-option">
+    <h3 class="config-subtitle">Idioma de la Aplicación</h3>
+    <label for="idioma" class="language-label">Selecciona tu idioma preferido:</label>
+    <select id="idioma" name="idioma" class="language-select">
+        <option value="es" selected>Español</option>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="zh">中文 (Chino)</option>
+        <option value="ja">日本語 (Japonés)</option>
+        <option value="ko">한국어 (Coreano)</option>
+        <option value="ar">العربية (Árabe)</option>
+        <option value="ru">Русский (Ruso)</option>
+        <option value="hi">हिन्दी (Hindi)</option>
+    </select>
+</div>
+
+    
+</body>
+</html>
+   
+
+
+
+
+

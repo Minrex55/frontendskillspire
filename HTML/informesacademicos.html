@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Informes - SkillSpire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--fuente);
+        }
+
+        body {
+            background-color: var(--fondo);
+            color: white;
+        }
+
+        /*Inicio del header*/
+        .containertop {
+            width: 100%;
+            height: 10%;
+            background-color: #273940; /* Color con opacidad */
+            display: flex;
+            position: fixed; /* Fijar en la parte superior */
+            top: 0; /* Asegura que esté arriba */
+            left: 0;
+            z-index: 1000; /* Que esté por encima de todo */
+            backdrop-filter: blur(40px); /* (opcional) efecto moderno de desenfoque */
+        }
+        .containertoplogo {
+            width: 30%;
+            height: 10vh;
+            display: flex;
+        }
+        .logoskill {
+           width: 18%;
+        }
+        .nameskill {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            align-self: center;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+        }
+        .containertopcenter {
+            width: 8%;
+            height: 10vh;
+        }
+        .containertopnav {
+            width: 62%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: #00000000;
+        }
+        .navbutton {
+            text-decoration: none;
+            background-color: #00000000;
+            color: white;
+            font-size: 20px;
+            border-style: none;
+            width: auto;
+            height: 100%;
+            margin-left: 5px;
+            padding: 12px;
+            border-radius: 15px;
+            transition: 0.5s;
+        }
+        .navbutton:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+        .profilesection {
+            align-items: center;
+            justify-content: center;
+            width: 10%;
+            height: 100%;
+        }
+        .profilesection img {
+            width: 80%;
+            height: 80%;
+            padding: 3px;
+        }
+        /*Fin del header*/
+        :root {
+            --fondo: #1f2831;
+            --color-botones: #0078d4;
+            --color-botones2: #2e3c47;
+            --gris-adicional: #273940;
+            --gris-adicional2: #3a4a56;
+            --fuente: "Poppins", sans-serif;
+        }
+
+        /* Estilos para la sección de generación de informes */
+        .main-container {
+            padding-top: 12vh;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .reports-container {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+        }
+
+        /* Estilos para sidebar de opciones */
+        .report-options {
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .options-title {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .report-category {
+            margin-bottom: 1.5rem;
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #ccc;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            padding: 0.8rem;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .option-item:hover {
+            background-color: var(--gris-adicional2);
+        }
+
+        .option-item.active {
+            background-color: var(--color-botones);
+        }
+
+        .option-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+            background-color: var(--color-botones);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .option-item.active .option-icon {
+            background-color: white;
+            color: var(--color-botones);
+        }
+
+        /* Estilos para el área de configuración de informes */
+        .report-builder {
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .builder-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .builder-title {
+            font-size: 1.6rem;
+        }
+
+        .report-info {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .report-info span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            background-color: #4CAF50;
+        }
+
+        .filter-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-label {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .filter-select, .filter-input {
+            padding: 0.8rem;
+            background-color: var(--gris-adicional2);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.95rem;
+        }
+
+        .filter-select:focus, .filter-input:focus {
+            outline: 2px solid var(--color-botones);
+        }
+
+        .date-range {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .date-range .filter-group {
+            flex: 1;
+        }
+
+        .preview-section {
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background-color: var(--gris-adicional2);
+            border-radius: 15px;
+            min-height: 300px;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .preview-title {
+            font-size: 1.2rem;
+        }
+
+        .preview-message {
+            text-align: center;
+            padding: 2rem 0;
+            color: #ccc;
+        }
+
+        .data-visualization {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            gap: 1.5rem;
+        }
+
+        .data-chart {
+            flex: 1;
+            height: 200px;
+            background-color: var(--gris-adicional);
+            border-radius: 10px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .chart-placeholder {
+            width: 80%;
+            height: 150px;
+            background: linear-gradient(90deg, 
+                var(--color-botones) 25%, 
+                var(--color-botones2) 25%, 
+                var(--color-botones2) 50%, 
+                var(--gris-adicional2) 50%, 
+                var(--gris-adicional2) 75%, 
+                var(--gris-adicional) 75%);
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .chart-placeholder::before {
+            content: "Vista previa de gráfica";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 0.5rem;
+            background-color: rgba(0,0,0,0.7);
+            border-radius: 5px;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .action-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cancel-btn {
+            background-color: var(--gris-adicional2);
+            color: white;
+        }
+
+        .cancel-btn:hover {
+            background-color: #4a5a66;
+        }
+
+        .preview-btn {
+            background-color: var(--color-botones2);
+            color: white;
+        }
+
+        .preview-btn:hover {
+            background-color: #3b4954;
+        }
+
+        .generate-btn {
+            background-color: var(--color-botones);
+            color: white;
+        }
+
+        .generate-btn:hover {
+            background-color: #0063b1;
+        }
+
+        /* Estilos para sección de informes recientes */
+        .recent-reports {
+            margin-top: 3rem;
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        .recent-title {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reports-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .reports-table th, .reports-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .reports-table th {
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        .reports-table tr:hover {
+            background-color: var(--gris-adicional2);
+        }
+
+        .report-status {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .status-completed {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .status-processing {
+            background-color: #FFC107;
+            color: black;
+        }
+
+        .report-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-icon {
+            width: 32px;
+            height: 32px;
+            background-color: var(--gris-adicional2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-icon:hover {
+            background-color: var(--color-botones);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .reports-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .report-options {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .report-category {
+                flex: 1;
+                min-width: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .data-visualization {
+                flex-direction: column;
+            }
+            
+            .filter-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .reports-table th:nth-child(3),
+            .reports-table td:nth-child(3) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <h1 class="page-title">Generador de Informes</h1>
+
+        <div class="reports-container">
+            <!-- Sidebar con opciones de informes -->
+            <div class="report-options">
+                <h2 class="options-title">Tipos de Informes</h2>
+                
+                <!-- Categoría: Académico -->
+                <div class="report-category">
+                    <h3 class="category-title">Académico</h3>
+                    <div class="option-item active">
+                        <div class="option-icon">A</div>
+                        <span>Rendimiento académico</span>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-icon">A</div>
+                        <span>Asistencia</span>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-icon">A</div>
+                        <span>Evolución por materias</span>
+                    </div>
+                </div>
+                
+                <!-- Categoría: Plataforma -->
+                <div class="report-category">
+                    <h3 class="category-title">Plataforma</h3>
+                    <div class="option-item">
+                        <div class="option-icon">P</div>
+                        <span>Actividad de usuarios</span>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-icon">P</div>
+                        <span>Uso de recursos</span>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-icon">P</div>
+                        <span>Interacciones</span>
+                    </div>
+                </div>
+                
+                <!-- Categoría: Administrativo -->
+                <div class="report-category">
+                    <h3 class="category-title">Administrativo</h3>
+                    <div class="option-item">
+                        <div class="option-icon">D</div>
+                        <span>Resumen general</span>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-icon">D</div>
+                        <span>Estadísticas por grado</span>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-icon">D</div>
+                        <span>Informe personalizado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Área de configuración de informes -->
+            <div class="report-builder">
+                <div class="builder-header">
+                    <h2 class="builder-title">Informe de Rendimiento Académico</h2>
+                    <div class="report-info">
+                        <span></span> Disponible para generación
+                    </div>
+                </div>
+
+                <!-- Filtros para configurar el informe -->
+                <div class="filter-section">
+                    <div class="filter-group">
+                        <label for="student-select" class="filter-label">Estudiante</label>
+                        <select id="student-select" class="filter-select">
+                            <option value="all">Todos los estudiantes</option>
+                            <option value="grade">Por grado</option>
+                            <option value="individual">Estudiante individual</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="grade-select" class="filter-label">Grado</label>
+                        <select id="grade-select" class="filter-select">
+                            <option value="all">Todos los grados</option>
+                            <option value="10a">10° A</option>
+                            <option value="10b" selected>10° B</option>
+                            <option value="10c">10° C</option>
+                            <option value="11a">11° A</option>
+                            <option value="11b">11° B</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="subject-select" class="filter-label">Materia</label>
+                        <select id="subject-select" class="filter-select">
+                            <option value="all">Todas las materias</option>
+                            <option value="math">Matemáticas</option>
+                            <option value="science">Ciencias Naturales</option>
+                            <option value="language">Lenguaje y Literatura</option>
+                            <option value="history">Historia</option>
+                            <option value="pe">Educación Física</option>
+                            <option value="english">Inglés</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="date-range">
+                    <div class="filter-group">
+                        <label for="date-from" class="filter-label">Desde</label>
+                        <input type="date" id="date-from" class="filter-input" value="2025-01-01">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="date-to" class="filter-label">Hasta</label>
+                        <input type="date" id="date-to" class="filter-input" value="2025-04-21">
+                    </div>
+                </div>
+
+                <!-- Área de vista previa -->
+                <div class="preview-section">
+                    <div class="preview-header">
+                        <h3 class="preview-title">Vista previa del informe</h3>
+                    </div>
+                    
+                    <div class="preview-message">
+                        <p>Configure los parámetros del informe y haga clic en "Vista previa" para visualizar el informe.</p>
+                    </div>
+                    
+                    <div class="data-visualization">
+                        <div class="data-chart">
+                            <div class="chart-placeholder"></div>
+                        </div>
+                        <div class="data-chart">
+                            <div class="chart-placeholder"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de acción -->
+                <div class="action-buttons">
+                    <button class="action-btn cancel-btn">Cancelar</button>
+                    <button class="action-btn preview-btn">Vista previa</button>
+                    <button class="action-btn generate-btn">Generar informe</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de informes recientes -->
+        <div class="recent-reports">
+            <h2 class="recent-title">Informes Recientes</h2>
+            
+            <table class="reports-table">
+                <thead>
+                    <tr>
+                        <th>Nombre del informe</th>
+                        <th>Fecha de generación</th>
+                        <th>Solicitado por</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rendimiento académico - 10° B</td>
+                        <td>21/04/2025</td>
+                        <td>Prof. Carlos Méndez</td>
+                        <td><span class="report-status status-completed">Completado</span></td>
+                        <td>
+                            <div class="report-actions">
+                                <div class="action-icon">↓</div>
+                                <div class="action-icon">🔍</div>
+                                <div class="action-icon">✉</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Asistencia - Abril 2025</td>
+                        <td>18/04/2025</td>
+                        <td>Admin. Sistema</td>
+                        <td><span class="report-status status-completed">Completado</span></td>
+                        <td>
+                            <div class="report-actions">
+                                <div class="action-icon">↓</div>
+                                <div class="action-icon">🔍</div>
+                                <div class="action-icon">✉</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Uso de recursos digitales</td>
+                        <td>15/04/2025</td>
+                        <td>Coord. Tecnología</td>
+                        <td><span class="report-status status-completed">Completado</span></td>
+                        <td>
+                            <div class="report-actions">
+                                <div class="action-icon">↓</div>
+                                <div class="action-icon">🔍</div>
+                                <div class="action-icon">✉</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Estadísticas Trimestrales</td>
+                        <td>21/04/2025</td>
+                        <td>Dirección Académica</td>
+                        <td><span class="report-status status-processing">Procesando</span></td>
+                        <td>
+                            <div class="report-actions">
+                                <div class="action-icon">🔍</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

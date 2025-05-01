@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSpire - Gestión de Archivos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/50.css">
+   
+</head>
+<body>
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="page-title">Integración de Herramientas Educativas</h1>
+        
+        <!-- Herramientas Populares -->
+        <h2>Herramientas Populares</h2>
+        <div class="integration-container">
+            <div class="integration-card">
+                <h3><img src="../images/moodle.png" alt="Moodle Logo"> Moodle</h3>
+                <p>Conecta tu cuenta de Moodle para sincronizar cursos, tareas y calificaciones directamente en SkillSpire.</p>
+                <div class="status">
+                    <div class="status-indicator status-disconnected"></div>
+                    <span>No conectado</span>
+                </div>
+                <button class="integration-button" onclick="openModal('moodle')">Conectar</button>
+            </div>
+            
+            <div class="integration-card">
+                <h3><img src="../images/google-classroom.png" alt="Google Classroom Logo"> Google Classroom</h3>
+                <p>Integra tus clases de Google Classroom para ver y gestionar todas tus asignaciones en un solo lugar.</p>
+                <div class="status">
+                    <div class="status-indicator status-connected"></div>
+                    <span>Conectado</span>
+                </div>
+                <button class="integration-button" onclick="openToolPreview('google-classroom')">Ver integración</button>
+            </div>
+            
+            <div class="integration-card">
+                <h3><img src="../images/images.png" alt="Canvas Logo"> Canvas</h3>
+                <p>Sincroniza tu cuenta de Canvas para acceder a todos tus materiales de curso sin cambiar de plataforma.</p>
+                <div class="status">
+                    <div class="status-indicator status-disconnected"></div>
+                    <span>No conectado</span>
+                </div>
+                <button class="integration-button" onclick="openModal('canvas')">Conectar</button>
+            </div>
+            
+            <div class="integration-card">
+                <h3><img src="../images/blackboard.png" alt="Blackboard Logo"> Blackboard</h3>
+                <p>Conecta Blackboard para acceder a tus cursos, participar en foros y enviar tareas directamente desde SkillSpire.</p>
+                <div class="status">
+                    <div class="status-indicator status-disconnected"></div>
+                    <span>No conectado</span>
+                </div>
+                <button class="integration-button" onclick="openModal('blackboard')">Conectar</button>
+            </div>
+            
+            <div class="integration-card">
+                <h3><img src="../images/Kahoot.png" alt="Kahoot Logo"> Kahoot!</h3>
+                <p>Integra Kahoot! para crear y participar en cuestionarios interactivos sin salir de la plataforma.</p>
+                <div class="status">
+                    <div class="status-indicator status-disconnected"></div>
+                    <span>No conectado</span>
+                </div>
+                <button class="integration-button" onclick="openModal('kahoot')">Conectar</button>
+            </div>
+            
+            <div class="integration-card">
+                <h3><img src="../images/Quizlet.png" alt="Quizlet Logo"> Quizlet</h3>
+                <p>Accede a tus sets de estudio de Quizlet directamente desde SkillSpire para mejorar tus sesiones de aprendizaje.</p>
+                <div class="status">
+                    <div class="status-indicator status-disconnected"></div>
+                    <span>No conectado</span>
+                </div>
+                <button class="integration-button" onclick="openModal('quizlet')">Conectar</button>
+            </div>
+        </div>
+
+        <!-- Configuración de API personalizada -->
+        <section class="config-section">
+            <h2>Configuración de API personalizada</h2>
+            <p>Configura una integración con cualquier LMS o herramienta educativa que soporte API estándar.</p>
+            
+            <div class="form-group">
+                <label for="api-type">Tipo de API</label>
+                <select id="api-type">
+                    <option value="">Seleccione un tipo de API</option>
+                    <option value="lti">LTI (Learning Tools Interoperability)</option>
+                    <option value="rest">REST API</option>
+                    <option value="oAuth">OAuth 2.0</option>
+                    <option value="xapi">xAPI (Experience API)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="api-name">Nombre de la herramienta</label>
+                <input type="text" id="api-name" placeholder="Ej: Mi universidad LMS">
+            </div>
+            
+            <div class="form-group">
+                <label for="api-url">URL de la API</label>
+                <input type="url" id="api-url" placeholder="https://api.example.com/v1">
+            </div>
+            
+            <div class="form-group">
+                <label for="api-key">Clave API / Client ID</label>
+                <input type="text" id="api-key" placeholder="Clave API o Client ID">
+            </div>
+            
+            <div class="form-group">
+                <label for="api-secret">Secreto API / Client Secret</label>
+                <input type="password" id="api-secret" placeholder="Secreto API o Client Secret">
+            </div>
+            
+            <div class="button-group">
+                <button class="save-button">Guardar configuración</button>
+                <button class="cancel-button">Cancelar</button>
+            </div>
+        </section>
+        
+        <!-- Vista previa de herramienta integrada -->
+        <div id="tool-preview-container" class="tool-preview">
+            <div class="tool-header">
+                <div class="tool-title">
+                    <img src="/api/placeholder/32/32" alt="Google Classroom" id="preview-icon">
+                    <h2 id="preview-title">Google Classroom</h2>
+                </div>
+                <button class="close-preview" onclick="closeToolPreview()">&times;</button>
+            </div>
+            
+            <div class="iframe-container">
+                <iframe src="about:blank" id="tool-iframe" title="Herramienta educativa"></iframe>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Modal de integración -->
+    <div id="integration-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Conectar con Moodle</h2>
+                <span class="close-button" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Proporciona tus credenciales para conectar con esta plataforma:</p>
+                
+                <div class="form-group">
+                    <label for="platform-url">URL de la plataforma</label>
+                    <input type="url" id="platform-url" placeholder="https://moodle.tuinstitucion.edu">
+                </div>
+                
+                <div class="form-group">
+                    <label for="username">Nombre de usuario</label>
+                    <input type="text" id="username" placeholder="Tu nombre de usuario">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="Tu contraseña">
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox"> Recordar mis credenciales
+                    </label>
+                </div>
+                
+                <p>También puedes usar el inicio de sesión único si tu institución lo soporta:</p>
+                <button class="integration-button" style="margin-top: 10px;">Iniciar sesión con tu institución</button>
+            </div>
+            <div class="button-group">
+                <button class="save-button" onclick="connectTool()">Conectar</button>
+                <button class="cancel-button" onclick="closeModal()">Cancelar</button>
+            </div>
+        </div>
+    </div> 
+</body>
+   

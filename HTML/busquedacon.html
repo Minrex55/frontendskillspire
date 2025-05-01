@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSpire - Gestión de Archivos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles1.css">
+   
+</head>
+<body>
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+   
+
+    <main>
+        <!-- Sección de búsqueda -->
+        <section class="busqueda-seccion">
+            <h2>Buscar Contenidos Educativos</h2>
+            <div class="busqueda-container">
+                <input type="text" placeholder="Buscar por palabra clave...">
+                <div class="filtros">
+                    <select id="nivel">
+                        <option value="">Seleccionar Nivel</option>
+                        <option value="primaria">Prescolar</option>
+                        <option value="primaria">primero</option>
+                        <option value="primaria">segundo</option>
+                        <option value="primaria">Tercero</option>
+                        <option value="primaria">Cuarto</option>
+                        <option value="primaria">Quinto</option>
+
+                        <option value="secundaria">Secundaria</option>
+                        <option value="primaria">Sexto</option>
+                        <option value="primaria">Septimo</option>
+                        <option value="primaria">Optavo</option>
+                        <option value="primaria">Noveno</option>
+                        <option value="preparatoria">Preparatoria</option>
+                        <option value="primaria">Decimo</option>
+                        <option value="primaria">Once</option>
+                    </select>
+                    <select id="materia">
+                        <option value="">Seleccionar Materia</option>
+                        <option value="matematicas">Matemáticas</option>
+                        <option value="ciencias">Ciencias Naturales</option>
+                        <option value="historia">Lengua Castellana</option>
+                        <option value="literatura">Ciencias Sociales</option>
+                        <option value="idiomas">Tecnologia e informatica</option>
+                        <option value="idiomas">Educación Artistica</option>
+                        <option value="idiomas">Educación fisica</option>
+                        <option value="idiomas">Ingles</option>
+                        <option value="idiomas">Filosofia</option>
+                        <option value="idiomas">Etica valores</option>
+                        <option value="idiomas">Quimica</option>
+                    </select>
+                    <button class="btn-buscar">Buscar</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de contenidos por nivel -->
+        <section class="niveles-seccion">
+            <h2>Explorar por Nivel</h2>
+            <div class="tarjetas-container">
+                <div class="tarjeta">
+                    <h3>Primaria</h3>
+                    <p>Contenidos básicos para niños </p>
+                    <button class="btn-explorar">Explorar</button>
+                </div>
+                <div class="tarjeta">
+                    <h3>Secundaria</h3>
+                    <p>Materiales para estudiantes</p>
+                    <button class="btn-explorar">Explorar</button>
+                </div>
+                <div class="tarjeta">
+                    <h3>Preparatoria</h3>
+                    <p>Recursos para jóvenes </p>
+                    <button class="btn-explorar">Explorar</button>
+                </div>
+              
+            </div>
+        </section>
+
+        <!-- Sección de materias populares -->
+        <section class="materias-seccion">
+            <h2>Materias Populares</h2>
+            <div class="materias-container">
+                <div class="materia-item">
+                    <div class="materia-icono">📐</div>
+                    <h3>Matemáticas</h3>
+                </div>
+                <div class="materia-item">
+                    <div class="materia-icono">🧪</div>
+                    <h3>Ciencias</h3>
+                </div>
+                <div class="materia-item">
+                    <div class="materia-icono">📚</div>
+                    <h3>Literatura</h3>
+                </div>
+                <div class="materia-item">
+                    <div class="materia-icono">🌎</div>
+                    <h3>Sociales</h3>
+                </div>
+                <div class="materia-item">
+                    <div class="materia-icono">💻</div>
+                    <h3>Tecnologia</h3>
+                </div>
+                <div class="materia-item">
+                    <div class="materia-icono">🗣️</div>
+                    <h3>Ingles</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="materias-seccion">
+            <h2>Descarga de contenidos</h2>
+            <div class="materias-container download">
+                <a href="descontenidos.html"><button>
+                    <div class="materia-item">
+                        <div class="materia-icono">✔</div>
+                        <h3>Descargar contenido educativo</h3>
+                    </div>
+                </button></a>
+            </div>
+        </section>
+       
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>SkillSpire</h4>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Carreras</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Centro de ayuda</a></li>
+                    <li><a href="#">Tutoriales</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Soporte técnico</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 SkillSpire. Todos los derechos reservados.
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Informes | SkillSpire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --fondo: #1f2831;
+            --color-botones: #0078d4;
+            --color-botones2: #2e3c47;
+            --gris-adicional: #273940;
+            --gris-adicional2: #3a4a56;
+            --fuente: "Poppins", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--fuente);
+        }
+
+        body {
+            background-color: var(--fondo);
+            color: white;
+            padding-top: 10vh; /* Espacio para el header fijo */
+        }
+
+        /* Inicio del header */
+        .containertop {
+            width: 100%;
+            height: 10%;
+            background-color: #273940;
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(40px);
+        }
+
+        .containertoplogo {
+            width: 30%;
+            height: 10vh;
+            display: flex;
+        }
+
+        .logoskill {
+            width: 18%;
+        }
+
+        .nameskill {
+            color: white;
+            align-self: center;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .containertopcenter {
+            width: 8%;
+            height: 10vh;
+        }
+
+        .containertopnav {
+            width: 62%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: #00000000;
+        }
+
+        .navbutton {
+            text-decoration: none;
+            background-color: #00000000;
+            color: white;
+            font-size: 20px;
+            border-style: none;
+            width: auto;
+            height: 100%;
+            margin-left: 5px;
+            padding: 12px;
+            border-radius: 15px;
+            transition: 0.5s;
+        }
+
+        .navbutton:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+
+        .profilesection {
+            align-items: center;
+            justify-content: center;
+            width: 10%;
+            height: 100%;
+        }
+
+        .profilesection img {
+            width: 80%;
+            height: 80%;
+            padding: 3px;
+        }
+        /* Fin del header */
+
+        /* Contenedor principal */
+        .main-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        /* Encabezado de la página */
+        .page-header {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--gris-adicional);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-header h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .page-header p {
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Estilos para la sección de selección de datos */
+        .section-container {
+            background-color: var(--gris-adicional);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Formularios y controles */
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--gris-adicional2);
+            border: 1px solid #3a4a56;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-botones);
+            box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.3);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='white' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 30px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            background-color: var(--gris-adicional2);
+            border: 1px solid #3a4a56;
+            border-radius: 3px;
+        }
+
+        /* Tabla de estudiantes seleccionados */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .data-table th {
+            background-color: var(--gris-adicional2);
+            color: white;
+            font-weight: 600;
+        }
+
+        .data-table tbody tr:hover {
+            background-color: rgba(58, 74, 86, 0.3);
+        }
+
+        .data-table .center {
+            text-align: center;
+        }
+
+        /* Botones y acciones */
+        .btn {
+            padding: 8px 15px;
+            background-color: var(--color-botones);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn:hover {
+            background-color: #0069b9;
+        }
+
+        .btn-secondary {
+            background-color: var(--color-botones2);
+        }
+
+        .btn-secondary:hover {
+            background-color: #3a4a56;
+        }
+
+        .btn-success {
+            background-color: #10b981;
+        }
+
+        .btn-success:hover {
+            background-color: #059669;
+        }
+
+        .btn-danger {
+            background-color: #ef4444;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Estilo para searchbox */
+        .search-box {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            background-color: var(--gris-adicional2);
+            border: 1px solid #3a4a56;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #a0a0a0;
+        }
+
+        /* Estilos para pestañas */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--gris-adicional2);
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .tab.active {
+            border-bottom-color: var(--color-botones);
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Vista previa del informe */
+        .report-preview {
+            background-color: white;
+            color: #333;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .report-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eaeaea;
+        }
+
+        .report-header h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #273940;
+        }
+
+        .report-header p {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .report-section {
+            margin-bottom: 20px;
+        }
+
+        .report-section h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #273940;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        .report-table th,
+        .report-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #eaeaea;
+        }
+
+        .report-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .report-graph {
+            height: 200px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .report-comments {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .report-signature {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .signature-line {
+            width: 200px;
+            border-bottom: 1px solid #aaa;
+            text-align: center;
+            padding-top: 30px;
+            margin: 0 auto;
+        }
+
+        /* Opciones de plantilla */
+        .template-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .template-card {
+            background-color: var(--gris-adicional2);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .template-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .template-preview {
+            height: 120px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 24px;
+        }
+
+        .template-info {
+            padding: 15px;
+        }
+
+        .template-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .template-desc {
+            font-size: 14px;
+            color: #a0a0a0;
+        }
+
+        .template-selected {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--color-botones);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Opciones de compartir */
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .share-card {
+            background-color: var(--gris-adicional2);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .share-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .share-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .share-title {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Badges y etiquetas */
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 10px;
+            margin-right: 5px;
+        }
+
+        .badge-blue {
+            background-color: var(--color-botones);
+            color: white;
+        }
+
+        .badge-green {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .badge-orange {
+            background-color: #f59e0b;
+            color: white;
+        }
+
+        .badge-red {
+            background-color: #ef4444;
+            color: white;
+        }
+
+        /* Sección de filtros */
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: var(--gris-adicional2);
+            border-radius: 8px;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .filter-select {
+            padding: 8px 15px;
+            background-color: var(--gris-adicional);
+            border: 1px solid #3a4a56;
+            border-radius: 5px;
+            color: white;
+            font-size: 14px;
+        }
+
+        /* Acciones finales */
+        .actions-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .step-nav {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-lg {
+            padding: 12px 20px;
+            font-size: 16px;
+        }
+
+        /* Stepper / Wizard */
+        .stepper {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--gris-adicional2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step.active .step-circle {
+            background-color: var(--color-botones);
+        }
+
+        .step.completed .step-circle {
+            background-color: #10b981;
+        }
+
+        .step-label {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .step-connector {
+            flex-grow: 1;
+            height: 3px;
+            background-color: var(--gris-adicional2);
+            margin: 0 -10px;
+            margin-top: 20px;
+        }
+
+        .step.completed + .step-connector,
+        .step.active + .step-connector {
+            background-color: var(--color-botones);
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .stepper {
+                display: none;
+            }
+            
+            .data-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+            
+            .actions-section {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .step-nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .checkbox-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        .slide-in {
+            animation: slideIn 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+   
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+     
+        <div class="page-header">
+            <h2>Generador de Informes de Calificaciones</h2>
+            <p>Crea informes detallados de rendimiento académico para estudiantes individuales o grupos. Personaliza la información, visualiza estadísticas y comparte los resultados con padres o tutores.</p>
+        </div>
+
+        <!-- Navegación por pasos (wizard) -->
+        <div class="stepper">
+            <div class="step active">
+                <div class="step-circle">1</div>
+                <div class="step-label">Selección de datos</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step">
+                <div class="step-circle">2</div>
+                <div class="step-label">Personalizar informe</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step">
+                <div class="step-circle">3</div>
+                <div class="step-label">Vista previa</div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step">
+                <div class="step-circle">4</div>
+                <div class="step-label">Guardar y compartir</div>
+            </div>
+        </div>
+
+        <!-- Paso 1: Selección de Datos -->
+        <div class="section-container fade-in">
+            <div class="section-header">
+                <h3 class="section-title">Paso 1: Selección de Datos</h3>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="report-type">Tipo de Informe</label>
+                        <select id="report-type" class="form-control">
+                            <option value="individual">Informe Individual</option>
+                            <option value="group">Informe Grupal</option>
+                            <option value="course">Informe de Curso</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="academic-period">Período Académico</label>
+                        <select id="academic-period" class="form-control">
+                            <option value="current">Período Actual (2025-Q1)</option>
+                            <option value="2024-Q4">2024 - Cuarto Trimestre</option>
+                            <option value="2024-Q3">2024 - Tercer Trimestre</option>
+                            <option value="2024-Q2">2024 - Segundo Trimestre</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="course-select">Curso</label>
+                        <select id="course-select" class="form-control">
+                            <option value="all">Todos los cursos</option>
+                            <option value="prog">Programación Web</option>
+                            <option value="math">Matemáticas</option>
+                            <option value="science">Ciencias</option>
+                            <option value="lang">Lenguaje</option>
+                            <option value="hist">Historia</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="class-select">Clase</label>
+                        <select id="class-select" class="form-control">
+                            <option value="all">Todas las clases</option>
+                            <option value="classA">Clase A</option>
+                            <option value="classB">Clase B</option>
+                            <option value="classC">Clase C</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar estudiantes por nombre, ID o grupo..." class="form-control">
+            </div>
+
+            <div class="filter-row">
+                <div class="filter-item">
+                    <span class="filter-label">Ordenar por:</span>
+                    <select class="filter-select">
+                        <option value="name">Nombre</option>
+                        <option value="id">ID</option>
+                        <option value="performance">Rendimiento</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <span class="filter-label">Mostrar:</span>
+                    <select class="filter-select">
+                        <option value="all">Todos</option>
+                        <option value="selected">Seleccionados</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-filter"></i> Filtros Avanzados
+                    </button>
+                </div>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th width="40">
+                            <input type="checkbox" id="select-all">
+                        </th>
+                        <th>Estudiante</th>
+                        <th>ID</th>
+                        <th>Curso</th>
+                        <th>Promedio</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="center">
+                            <input type="checkbox" class="student-select" checked>
+                        </td>
+                        <td>Ana María Gutiérrez</td>
+                        <td>EST-001</td>
+                        <td>Programación Web</td>
+                        <td>9.5</td>
+                        <td><span class="badge badge-green">Excelente</span></td>
+                    </tr>
+                    <tr>
+                        <td class="center">
+                            <input type="checkbox" class="student-select">
+                        </td>
+                        <td>Carlos Pérez Monsalve</td>
+                        <td>EST-002</td>
+                        <td>Programación Web</td>
+                        <td>8.7</td>
+                        <td><span class="badge badge-blue">Muy Bueno</span></td>
+                    </tr>
+                    <tr>
+                        <td class="center">
+                            <input type="checkbox" class="student-select">
+                        </td>
+                        <td>Diana Ortiz Valencia</td>
+                        <td>EST-003</td>
+                        <td>Programación Web</td>
+                        <td>7.4</td>
+                        <td><span class="badge badge-orange">Bueno</span></td>
+                    </tr>
+                    <tr>
+                        <td class="center">
+                            <input type="checkbox" class="student-select" checked>
+                        </td>
+                        <td>Eduardo Sánchez Mora</td>
+                        <td>EST-004</td>
+                        <td>Programación Web</td>
+                        <td>5.6</td>
+                        <td><span class="badge badge-red">En riesgo</span></td>
+                    </tr>
+                    <tr>
+                        <td class="center">
+                            <input type="checkbox" class="student-select">
+                        </td>
+                        <td>Fernanda Rodríguez Torres</td>
+                        <td>EST-005</td>
+                        <td>Programación Web</td>
+                        <td>9.2</td>
+                        <td><span class="badge badge-green">Excelente</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="form-group">
+                <label>Selecciona la información a incluir:</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="include-personal" checked>
+                        <label for="include-personal">Información personal</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="include-attendance" checked>
+                        <label for="include-attendance">Asistencia</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="include-grades" checked>
+                        <label for="include-grades">Calificaciones</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="include-statistics" checked>
+                        <label for="include-statistics">Estadísticas</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="include-comments" checked>
+                        <label for="include-comments">Comentarios</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="include-recommendations">
+                        <label for="include-recommendations">Recomendaciones</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="include-comparison">
+                        <label for="include-comparison">Comparación con otros estudiantes</label>
+                    </div>  

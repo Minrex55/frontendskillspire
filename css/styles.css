@@ -1,0 +1,528 @@
+/* 
+========================================
+VARIABLES GLOBALES
+========================================
+*/
+:root {
+    --fondo: #1f2831;
+    --color-botones: #0078d4;
+    --color-botones2: #2e3c47;
+    --gris-adicional: #273940;
+    --gris-adicional2: #3a4a56;
+    --fuente: "Poppins", sans-serif;
+    
+    /* Colores del diseño original */
+    --azul-oscuro: #273940;
+    --gris-azulado: #5A6E73;
+    --azul-muy-oscuro: #1f2831;
+    --acento: #A7F2EB;
+    --texto-claro: white;
+    --fondo-claro: #F2F2DF;
+}
+
+/* 
+========================================
+RESET Y CONFIGURACIÓN GENERAL
+========================================
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente);
+    color: var(--texto-claro);
+}
+
+body {
+    background-color: var(--fondo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 
+========================================
+HEADER PRINCIPAL
+========================================
+*/
+.containertop {
+    width: 100%;
+    height: 10vh;
+    background-color: var(--gris-adicional);
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(40px);
+}
+
+.containertoplogo {
+    width: 30%;
+    height: 10vh;
+    display: flex;
+}
+
+.logoskill {
+   width: 18%;
+}
+
+.nameskill {
+    align-self: center;
+    font-size: 20px;
+}
+
+.containertopcenter {
+    width: 8%;
+}
+
+.containertopnav {
+    width: 62%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: transparent;
+}
+
+.navbutton {
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--texto-claro);
+    font-size: 20px;
+    border: none;
+    width: auto;
+    height: 100%;
+    margin-left: 5px;
+    padding: 12px;
+    border-radius: 15px;
+    transition: 0.5s;
+}
+
+.navbutton:hover {
+    background-color: var(--texto-claro);
+    color: black;
+    cursor: pointer;
+}
+
+.profilesection {
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 100%;
+}
+
+.profilesection img {
+    width: 80%;
+    height: 80%;
+    padding: 3px;
+}
+
+/* 
+========================================
+HEADER SECUNDARIO
+========================================
+*/
+.page-header {
+    width: 100%;
+    background-color: var(--gris-azulado);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 10vh;
+}
+
+.page-header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* 
+========================================
+LAYOUT PRINCIPAL
+========================================
+*/
+.main-container {
+    display: flex;
+    flex-grow: 1;
+    margin-top: 20px;
+    padding: 0 20px;
+}
+
+/* 
+========================================
+BARRA LATERAL
+========================================
+*/
+.sidebar {
+    width: 250px;
+    background-color: var(--fondo);
+    border-right: 1px solid var(--gris-azulado);
+    padding: 20px 0;
+    min-height: calc(100vh - 10vh - 62px - 20px);
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 0 24px 24px 0;
+    margin-bottom: 8px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-item.active {
+    background-color: var(--gris-azulado);
+    color: var(--azul-oscuro);
+    font-weight: 500;
+}
+
+.sidebar-item:hover:not(.active) {
+    background-color: rgba(167, 242, 235, 0.3);
+}
+
+.sidebar-item-icon {
+    margin-right: 16px;
+    font-size: 20px;
+}
+
+/* 
+========================================
+CONTENIDO PRINCIPAL
+========================================
+*/
+.content {
+    flex-grow: 1;
+    padding: 0 20px 20px 20px;
+}
+
+/* Navegación de ruta */
+.path-nav {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: var(--gris-azulado);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.path-item {
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.path-item:hover {
+    text-decoration: underline;
+}
+
+.path-separator {
+    margin: 0 8px;
+    color: var(--texto-claro);
+    opacity: 0.7;
+}
+
+/* Botones de acción */
+.actions {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 12px;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+    background-color: var(--gris-azulado);
+}
+
+.btn-primary {
+    background-color: var( --gris-azulado);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #0063b1;
+}
+
+.btn:hover:not(.btn-primary) {
+    background-color: var(--gris-adicional2);
+}
+
+.btn-icon {
+    margin-right: 8px;
+}
+
+/* 
+========================================
+GRID DE ARCHIVOS Y CARPETAS
+========================================
+*/
+.files-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.folder-card {
+    background-color: var(--gris-azulado);
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid var(--gris-azulado);
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.folder-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    border-color: var(--acento);
+}
+
+/* Iconos de tarjetas */
+.card-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    text-align: center;
+    color: var(--azul-oscuro);
+}
+
+.card-name {
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+.card-info {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 5px;
+}
+
+/* Menú de acciones */
+.card-actions {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: none;
+}
+
+.folder-card:hover .card-actions {
+    display: block;
+}
+
+.card-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* 
+========================================
+MODALES
+========================================
+*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(39, 57, 64, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--fondo-claro);
+    border-radius: 10px;
+    padding: 24px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--azul-oscuro);
+    text-align: center;
+}
+
+/* Campos de formulario */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: var(--gris-azulado);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--gris-azulado);
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: var(--fondo-claro);
+    color: var(--azul-oscuro);
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--acento);
+    box-shadow: 0 0 0 2px rgba(167, 242, 235, 0.3);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.modal-actions button {
+    margin-left: 10px;
+}
+
+/* Estilos específicos para tarjetas de archivo */
+.file-card .card-icon {
+    color: var(--azul-oscuro);
+}
+
+/* 
+========================================
+MEDIA QUERIES - DISEÑO RESPONSIVE
+========================================
+*/
+@media (max-width: 992px) {
+    .containertoplogo {
+        width: 40%;
+    }
+    
+    .containertopcenter {
+        display: none;
+    }
+    
+    .containertopnav {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbutton {
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--gris-azulado);
+        min-height: auto;
+        padding: 10px 0;
+    }
+    
+    .sidebar-item {
+        padding: 8px 20px;
+        margin-bottom: 4px;
+    }
+    
+    .content {
+        padding: 15px;
+    }
+    
+    .files-container {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 15px;
+    }
+    
+    .folder-card {
+        height: 130px;
+    }
+}
+
+@media (max-width: 576px) {
+    .nameskill {
+        font-size: 16px;
+    }
+    
+    .containertopnav {
+        justify-content: flex-end;
+        padding-right: 10px;
+    }
+    
+    .navbutton {
+        display: none;
+    }
+    
+    .profilesection {
+        margin-left: auto;
+    }
+    
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .files-container {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 10px;
+    }
+    
+    .folder-card {
+        height: 120px;
+        padding: 12px;
+    }
+    
+    .card-icon {
+        font-size: 36px;
+    }
+    
+    .card-name {
+        font-size: 12px;
+    }
+}

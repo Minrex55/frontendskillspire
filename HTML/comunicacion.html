@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/stylecom.css">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <title>SkillSpire</title>
+</head>
+<body>
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="headerdown">
+            <div class="leftsectiondowheader">
+
+            </div>
+            <div class="centersectiondownheader">
+
+            </div>
+            <div class="rightsectiondownheader">
+
+            </div>
+        </div>
+        <div class="containerdown">
+            <div class="containerdownleft">
+                <div class="settings-panel">
+                    <div class="user-profile">
+                        <div class="profile-picture">
+                            <img src="../images/profile.png" alt="Perfil">
+                        </div>
+                        <div class="profile-info">
+                            <h3>Usuario</h3>
+                            <p class="status-text">En línea</p>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h4>Chats</h4>
+                        <div class="settings-option">
+                            <button class="setting-button">
+                                <i data-feather="message-square"></i>
+                                <span>Nuevo chat</span>
+                            </button>
+                        </div>
+                        <div class="settings-option">
+                            <button class="setting-button">
+                                <i data-feather="users"></i>
+                                <span>Nuevo grupo</span>
+                            </button>
+                        </div>
+                        <div class="settings-option">
+                            <button class="setting-button">
+                                <i data-feather="archive"></i>
+                                <span>Chats archivados</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h4>Apariencia</h4>
+                        <div class="settings-option">
+                            <div class="theme-toggle">
+                                <span>Tema</span>
+                                <label class="switch">
+                                    <input type="checkbox" id="theme-toggle">
+                                    <span class="slider round"></span>
+                                </label>
+                                <div class="theme-labels">
+                                    <span class="theme-dark">Oscuro</span>
+                                    <span class="theme-light">Claro</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="settings-option">
+                            <button class="setting-button">
+                                <i data-feather="layout"></i>
+                                <span>Personalizar</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h4>Notificaciones</h4>
+                        <div class="settings-option">
+                            <div class="notification-toggle">
+                                <span>Notificaciones</span>
+                                <label class="switch">
+                                    <input type="checkbox" id="notification-toggle" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="settings-option">
+                            <button class="setting-button">
+                                <i data-feather="bell"></i>
+                                <span>Configurar sonidos</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h4>Privacidad y seguridad</h4>
+                        <div class="settings-option">
+                            <button class="setting-button">
+                                <i data-feather="lock"></i>
+                                <span>Bloquear contactos</span>
+                            </button>
+                        </div>
+                        <div class="settings-option">
+                            <button class="setting-button">
+                                <i data-feather="shield"></i>
+                                <span>Seguridad</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-footer">
+                        <button class="setting-button logout">
+                            <i data-feather="log-out"></i>
+                            <span>Cerrar sesión</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="containerdowncenter">
+                <div class="chat-header">
+                    <div class="chat-contact">
+                        <div class="contact-photo">
+                            <img src="../images/profile.png" alt="Contacto actual">
+                        </div>
+                        <div class="contact-info">
+                            <h2 id="current-contact-name">Selecciona un contacto</h2>
+                            <p class="contact-status">En línea</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-messages" id="chat-messages">
+                    <!-- Los mensajes se cargarán dinámicamente aquí -->
+                    <div class="message-info">Selecciona un contacto para ver los mensajes</div>
+                </div>
+                
+                <div class="chat-input-area">
+                    <div class="media-buttons">
+                        <button id="attach-file" title="Adjuntar archivo">
+                            <i data-feather="paperclip"></i>
+                        </button>
+                        <button id="attach-image" title="Enviar imagen">
+                            <i data-feather="image"></i>
+                        </button>
+                        <button id="record-audio" title="Mensaje de voz">
+                            <i data-feather="mic"></i>
+                        </button>
+                        <button id="record-video" title="Mensaje de video">
+                            <i data-feather="video"></i>
+                        </button>
+                    </div>
+                    <input type="text" id="message-input" placeholder="Escribe un mensaje...">
+                    <button id="send-button">
+                        <i data-feather="send"></i>
+                    </button>
+                    
+                    <!-- Input oculto para seleccionar archivos -->
+                    <input type="file" id="file-input" multiple style="display: none;">
+                </div>
+            </div>
+            <div class="containerdownright">
+                <div class="chat-categories">
+                    <h3>Categorías</h3>
+                    <div class="category-tabs">
+                        <button class="category-tab active" data-category="all">Todos</button>
+                        <button class="category-tab" data-category="clase">Clases</button>
+                        <button class="category-tab" data-category="materia">Materias</button>
+                        <button class="category-tab" data-category="nivel">Niveles</button>
+                    </div>
+                </div>
+                <div class="top-tools">
+                    <input type="text" id="searchInput" placeholder="Buscar..." oninput="filtrarContactos()">
+                    <div class="filters">
+                        <button onclick="mostrarTodos()" title="Todos"><i data-feather="list"></i></button>
+                        <button onclick="mostrarFavoritos()" title="Favoritos"><i data-feather="star"></i></button>
+                        <button onclick="mostrarFijados()" title="Fijados"><i data-feather="bookmark"></i></button>
+                        <button onclick="sincronizar()" title="Sincronizar"><i data-feather="repeat"></i></button>
+                    </div>
+                </div>
+            
+                <div class="contactos-lista" id="listaContactos">
+                    <!-- Contenedores de contactos, sin duplicar -->
+                    <div class="separatorp"></div>
+                    <div class="peopleconteiner">
+                        <div class="profilephotop"><img src="../images/profile.png" alt=""></div>
+                        <div class="textp">
+                            <div class="namep"><h1>Profesor Antonio 6°3</h1></div>
+                            <div class="messagep"><p>Recuerda enviar la tarea</p></div>
+                        </div>
+                    </div>
+                    <div class="separatorp"></div>
+                    <div class="peopleconteiner">
+                        <div class="profilephotop"><img src="../images/profile.png" alt=""></div>
+                        <div class="textp">
+                            <div class="namep"><h1>Directora Ana</h1></div>
+                            <div class="messagep"><p>Reunión con padres mañana Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, quos?</p></div>
+                        </div>
+                    </div>
+                    <div class="separatorp"></div>
+                    <div class="peopleconteiner">
+                        <div class="profilephotop"><img src="../images/profile.png" alt=""></div>
+                        <div class="textp">
+                            <div class="namep"><h1>Profesora María 6°3</h1></div>
+                            <div class="messagep"><p>Recuerda enviar la tarea</p></div>
+                        </div>
+                    </div>
+                    <div class="separatorp"></div>
+                    <div class="peopleconteiner">
+                        <div class="profilephotop"><img src="../images/profile.png" alt=""></div>
+                        <div class="textp">
+                            <div class="namep"><h1>Profesor Hector 6°3</h1></div>
+                            <div class="messagep"><p>Recuerda enviar la tarea</p></div>
+                        </div>
+                    </div>
+                    <div class="separatorp"></div>
+                    <div class="peopleconteiner">
+                        <div class="profilephotop"><img src="../images/profile.png" alt=""></div>
+                        <div class="textp">
+                            <div class="namep"><h1>Director Perez</h1></div>
+                            <div class="messagep"><p>Recuerda enviar la tarea</p></div>
+                        </div>
+                    </div>
+                    <div class="separatorp"></div>
+                    <div class="peopleconteiner">
+                        <div class="profilephotop"><img src="../images/profile.png" alt=""></div>
+                        <div class="textp">
+                            <div class="namep"><h1>Compañera Valery</h1></div>
+                            <div class="messagep"><p>Recuerda enviar la tarea</p></div>
+                        </div>
+                    </div>
+                    <div class="separatorp"></div>
+                    <div class="peopleconteiner">
+                        <div class="profilephotop"><img src="../images/profile.png" alt=""></div>
+                        <div class="textp">
+                            <div class="namep"><h1>Compañero Jacob</h1></div>
+                            <div class="messagep"><p>Recuerda enviar la tarea</p></div>
+                        </div>
+                    </div>
+                    <div class="separatorp"></div>
+                </div>
+            </div>
+            
+            
+            <script src="../js/scriptcom.js"></script>
+            <script src="https://unpkg.com/feather-icons"></script>
+            <script>
+                feather.replace();
+            </script>
+</body>
+</html>

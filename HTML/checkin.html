@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSpire - Check-in</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --fondo: #1f2831;
+            --color-botones: #0078d4;
+            --color-botones2: #2e3c47;
+            --gris-adicional: #273940;
+            --gris-adicional2: #3a4a56;
+            --fuente: "Poppins", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--fuente);
+        }
+
+        body {
+            background-color: var(--fondo);
+            color: white;
+        }
+
+        /*Inicio del header*/
+        .containertop {
+            width: 100%;
+            height: 10%;
+            background-color: #273940; /* Color con opacidad */
+            display: flex;
+            position: fixed; /* Fijar en la parte superior */
+            top: 0; /* Asegura que esté arriba */
+            left: 0;
+            z-index: 1000; /* Que esté por encima de todo */
+            backdrop-filter: blur(40px); /* (opcional) efecto moderno de desenfoque */
+        }
+        .containertoplogo {
+            width: 30%;
+            height: 10vh;
+            display: flex;
+        }
+        .logoskill {
+            width: 18%;
+        }
+        .nameskill {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            align-self: center;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+        }
+        .containertopcenter {
+            width: 8%;
+            height: 10vh;
+        }
+        .containertopnav {
+            width: 62%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: #00000000;
+        }
+        .navbutton {
+            text-decoration: none;
+            background-color: #00000000;
+            color: white;
+            font-size: 20px;
+            border-style: none;
+            width: auto;
+            height: 100%;
+            margin-left: 5px;
+            padding: 12px;
+            border-radius: 15px;
+            transition: 0.5s;
+        }
+        .navbutton:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+        .profilesection {
+            align-items: center;
+            justify-content: center;
+            width: 10%;
+            height: 100%;
+        }
+        .profilesection img {
+            width: 80%;
+            height: 80%;
+            padding: 3px;
+        }
+        /*Fin del header*/
+
+        /* Estilos para la interfaz de Check-in */
+        .main-container {
+            width: 100%;
+            padding: 120px 5% 50px;
+            min-height: 100vh;
+        }
+
+        .check-in-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .check-in-container {
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .check-in-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--gris-adicional2);
+            background-color: var(--fondo);
+            color: white;
+            font-size: 16px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-botones);
+            box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.25);
+        }
+
+        .check-in-options {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .option-card {
+            background-color: var(--gris-adicional2);
+            border-radius: 10px;
+            padding: 15px;
+            flex: 1;
+            min-width: 120px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .option-card:hover {
+            background-color: var(--color-botones2);
+            transform: translateY(-3px);
+        }
+
+        .option-card.active {
+            background-color: var(--color-botones);
+            border: 2px solid white;
+        }
+
+        .submit-btn {
+            background-color: var(--color-botones);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 20px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0062ad;
+            transform: translateY(-2px);
+        }
+
+        .status-section {
+            margin-top: 30px;
+            background-color: var(--gris-adicional2);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .status-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #4CAF50;
+        }
+
+        .check-in-history {
+            border-top: 1px solid var(--gris-adicional);
+            padding-top: 15px;
+        }
+
+        .history-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .check-in-options {
+                flex-direction: column;
+            }
+            
+            .option-card {
+                width: 100%;
+            }
+            
+            .containertopnav {
+                display: none;
+            }
+            
+            .containertoplogo {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header según el código proporcionado -->
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal - Interfaz de Check-in -->
+    <div class="main-container">
+        <h1 class="check-in-title">Check-in SkillSpire</h1>
+        
+        <div class="check-in-container">
+            <form class="check-in-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" class="form-control" placeholder="Ingresa tu nombre completo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" class="form-control" placeholder="correo@ejemplo.com" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Selecciona tu tipo de check-in</label>
+                    <div class="check-in-options">
+                        <div class="option-card active">
+                            <h3>Entrada</h3>
+                        </div>
+                        <div class="option-card">
+                            <h3>Salida</h3>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comentario">Comentarios (opcional)</label>
+                    <textarea id="comentario" class="form-control" rows="3" placeholder="Añade un comentario sobre tu check-in"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Registrar Check-in</button>
+            </form>
+            
+            <div class="status-section">
+                <div class="status-header">
+                    <h2>Estado actual</h2>
+                    <div class="status-indicator">
+                        <div class="status-dot"></div>
+                        <span>En línea</span>
+                    </div>
+                </div>
+                
+                <div class="check-in-history">
+                    <h3>Historial reciente</h3>
+                    <div class="history-item">
+                        <span>Entrada</span>
+                        <span>Hoy, 08:30 AM</span>
+                    </div>
+                    <div class="history-item">
+                        <span>Salida</span>
+                        <span>Ayer, 06:15 PM</span>
+                    </div>
+                    <div class="history-item">
+                        <span>Entrada</span>
+                        <span>Ayer, 08:45 AM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Script para manejar la selección de opciones de check-in
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Quitar la clase active de todas las tarjetas
+                document.querySelectorAll('.option-card').forEach(c => {
+                    c.classList.remove('active');
+                });
+                
+                // Añadir la clase active a la tarjeta clickeada
+                this.classList.add('active');
+            });
+        });
+        
+        // Manejar el envío del formulario
+        document.querySelector('.check-in-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nombre = document.getElementById('nombre').value;
+            const correo = document.getElementById('correo').value;
+            const tipoCheckIn = document.querySelector('.option-card.active h3').textContent;
+            const comentario = document.getElementById('comentario').value;
+            
+            // Aquí se podría implementar la lógica para enviar los datos a un servidor
+            
+            alert(`Check-in registrado con éxito:\nNombre: ${nombre}\nCorreo: ${correo}\nTipo: ${tipoCheckIn}`);
+            
+            // Actualizar historial (ejemplo)
+            const ahora = new Date();
+            const horaFormateada = ahora.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            const nuevoItem = document.createElement('div');
+            nuevoItem.className = 'history-item';
+            nuevoItem.innerHTML = `
+                <span>${tipoCheckIn}</span>
+                <span>Hoy, ${horaFormateada}</span>
+            `;
+            
+            const historial = document.querySelector('.check-in-history');
+            historial.insertBefore(nuevoItem, historial.children[1]);
+        });
+    </script>
+</body>
+</html>

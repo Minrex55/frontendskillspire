@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes | SkillSpire</title>
+    <style>
+        :root {
+            --primary-color: #273940;
+            --secondary-color: #5A6E73;
+            --accent-color: #A7F2EB;
+            --light-color: #F2F2DF;
+            --text-color: #273940;
+            --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Estilos del Header */
+        header {
+            background-color: var(--primary-color);
+            padding: 10px 0;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .containertop {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .containertoplogo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logoskill {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        
+        .nameskill {
+            color: var(--accent-color);
+            margin-left: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .containertopcenter {
+            flex: 1;
+        }
+        
+        .containertopnav {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navlink {
+            text-decoration: none;
+        }
+        
+        .navbutton {
+            background-color: transparent;
+            border: none;
+            color: var(--light-color);
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .navbutton:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .navbutton.active {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .profilesection {
+            margin-left: 15px;
+        }
+        
+        .profilelink .logoskill {
+            width: 35px;
+            height: 35px;
+        }
+        
+        /* Estilos del contenedor principal */
+        .main-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .page-title h1 {
+            color: #A7F2EB;
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .page-title p {
+            color: #A7F2EB;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Estilos de la sección de FAQ */
+        .faq-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .faq-categories {
+            flex: 0 0 280px;
+            background-color: #A7F2EB;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .faq-categories h2 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .category-list {
+            list-style: none;
+        }
+        
+        .category-item {
+            margin-bottom: 10px;
+        }
+        
+        .category-button {
+            display: block;
+            width: 100%;
+            padding: 12px 15px;
+            text-align: left;
+            background-color: var(--light-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+        
+        .category-button:hover {
+            background-color: rgba(49, 65, 63, 0.4);
+        }
+        
+        .category-button.active {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        .faq-content {
+            flex: 1;
+        }
+        
+        .search-bar {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 15px 15px 45px;
+            border: 2px solid #ddd;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: rgb(85, 73, 73);
+        }
+        
+        .search-input:focus {
+            border-color: var(--accent-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(167, 242, 235, 0.3);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-color);
+        }
+        
+        .faq-questions {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+            padding: 5px;
+        }
+        
+        .category-title {
+            padding: 20px 25px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            margin-bottom: 10px;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            overflow: hidden;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(167, 242, 235, 0.1);
+        }
+        
+        .faq-icon {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            background-color: rgba(242, 242, 223, 0.3);
+        }
+        
+        .faq-answer-content {
+            padding: 0 25px;
+            color: var(--secondary-color);
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 20px 0;
+        }
+        
+        .no-results {
+            padding: 30px;
+            text-align: center;
+            color: var(--secondary-color);
+        }
+        
+        .help-box {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(167, 242, 235, 0.2);
+            border-radius: 10px;
+            border: 1px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .help-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .help-text {
+            flex: 1;
+        }
+        
+        .help-text h3 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .help-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .help-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        .breadcrumbs a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsivo */
+        @media (max-width: 900px) {
+            .faq-container {
+                flex-direction: column;
+            }
+            
+            .faq-categories {
+                flex: 0 0 auto;
+            }
+            
+            .containertop {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .containertopnav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .category-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="main-container">
+        <div class="breadcrumbs">
+          <!--es un espaciador de divs, si no se pone no se ve la barra de arriba -->
+        </div>
+        
+        <div class="page-title">
+            <h1>Preguntas Frecuentes</h1>
+            <p>Encuentra respuestas a las dudas más comunes sobre nuestra plataforma educativa y sus funcionalidades</p>
+        </div>
+        
+        <div class="faq-container">
+            <aside class="faq-categories">
+                <h2>Categorías</h2>
+                <ul class="category-list">
+                    <li class="category-item">
+                        <button class="category-button active" data-category="general">General</button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-button" data-category="cuenta">Cuenta y Acceso</button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-button" data-category="cursos">Cursos y Contenido</button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-button" data-category="tareas">Tareas y Evaluaciones</button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-button" data-category="certificados">Certificados</button>
+                    </li>
+                    <li class="category-item">
+                        <button class="category-button" data-category="tecnico">Soporte Técnico</button>
+                    </li>
+                </ul>
+            </aside>
+            
+            <main class="faq-content">
+                <div class="search-bar">
+                    <input type="text" class="search-input" id="faqSearch" placeholder="Buscar preguntas...">
+                    <div class="search-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="faq-questions">
+                    <h2 class="category-title" id="categoryTitle">General</h2>
+                    
+                    <div class="faq-list" id="faqList">
+                        <!-- General -->
+                        <div class="faq-item" data-category="general">
+                            <div class="faq-question">
+                                <span>¿Qué es SkillSpire y cómo funciona?</span>
+                                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>SkillSpire es una plataforma educativa diseñada para facilitar el aprendizaje en línea. Ofrecemos cursos interactivos, recursos educativos y herramientas de colaboración que permiten a los estudiantes aprender a su propio ritmo.</p>
+                                    <p>Nuestra plataforma cuenta con funciones como seguimiento de progreso, evaluaciones automatizadas, comunicación directa con instructores y certificaciones al completar los cursos.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="general">
+                            <div class="faq-question">
+                                <span>¿Cómo puedo contactar con soporte técnico?</span>
+                                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Puedes contactar con nuestro equipo de soporte técnico de varias formas:</p>
+                                    <ul>
+                                        <li>A través del formulario de contacto en la sección "Soporte"</li>
+                                        <li>Enviando un correo a soporte@skillspire.edu</li>
+                                        <li>Utilizando el chat en vivo disponible de lunes a viernes de 8:00 a 18:00</li>
+                                    </ul>
+                                    <p>Nuestro tiempo de respuesta promedio es de 24 horas hábiles.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="general">
+                            <div class="faq-question">
+                                <span>¿La plataforma está disponible en dispositivos móviles?</span>
+                                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Sí, SkillSpire está completamente optimizado para dispositivos móviles. Puedes acceder a través de cualquier navegador web moderno o descargar nuestra aplicación móvil disponible para iOS y Android.</p>
+                                    <p>La aplicación ofrece funcionalidades adicionales como descarga de contenido para visualización sin conexión y notificaciones personalizadas.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Cuenta y Acceso -->
+                        <div class="faq-item" data-category="cuenta">
+                            <div class="faq-question">
+                                <span>He olvidado mi contraseña. ¿Cómo puedo recuperarla?</span>
+                                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Para recuperar tu contraseña, sigue estos pasos:</p>
+                                    <ol>
+                                        <li>Haz clic en "¿Olvidaste tu contraseña?" en la pantalla de inicio de sesión</li>
+                                        <li>Introduce tu correo electrónico registrado</li>
+                                        <li>Revisa tu bandeja de entrada y sigue las instrucciones del correo que recibirás</li>
+                                    </ol>
+                                    <p>Si no recibes el correo, revisa tu carpeta de spam o contacta con soporte técnico.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" data-category="cuenta">
+                            <div class="faq-question">
+                                <span>¿Cómo puedo actualizar mi información de perfil?</span>
+                                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Para actualizar tu información de perfil:</p>
+                                    <ol>
+                                        <li>Haz clic en tu imagen de perfil en la esquina superior derecha</li>
+                                        <li>Selecciona "Mi perfil" en el menú desplegable</li>
+                                        <li>Haz clic en "Editar perfil"</li>
+                                        <li>Actualiza la información deseada y guarda los cambios</li>
+                                    </ol>
+                                    <p>Nota: Algunos campos como tu nombre completo o ID de estudiante podrían requerir verificación por parte del administrador.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Cursos y Contenido -->
+                        <div class="faq-item" data-category="cursos">
+                            <div class="faq-question">
+                                <span>¿Cómo accedo a los materiales del curso?</span>
+                                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Una vez inscrito en un curso, puedes acceder a los materiales de varias formas:</p>
+                                    <ul>
+                                        <li>Desde la página principal, en la sección "Mis cursos"</li>
+                                        <li>A través del panel de navegación lateral, seleccionando "Cursos" y luego eligiendo el curso específico</li>
+                                        <li>Desde el calendario, haciendo clic en las sesiones programadas</li>
+                                    </ul>
+                                    <p>Dentro de cada curso, encontrarás los materiales organizados por módulos o semanas, incluyendo lecturas, videos, presentaciones y actividades prácticas.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tareas y Evaluaciones -->
+                        <div class="faq-item" data-category="tareas">
+                            <div class="faq-question">
+                                <span>¿Cómo puedo saber si mis tareas han sido evaluadas?</span>
+                                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Para verificar el estado de tus tareas evaluadas:</p>
+                                    <ol>
+                                        <li>Ve a la sección "Calificaciones" en el menú principal</li>
+                                        <li>Selecciona el curso específico</li>
+                                        <li>Verás una lista de todas tus tareas con su estado (enviada, evaluada, pendiente)</li>
+                                    </ol>
+                                    <p>También recibirás notificaciones cuando tus tareas sean evaluadas, y puedes configurar alertas por correo electrónico en la sección de preferencias.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Certificados -->
+                        <div class="faq-item" data-category="certificados">
+                            <div class="faq-question">
+                                <span>¿Cómo obtengo mi certificado al completar un curso?</span>
+                                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Los certificados se emiten automáticamente cuando completas todos los requisitos del curso. Para obtener tu certificado:</p>
+                                    <ol>
+                                        <li>Completa todas las actividades requeridas del curso</li>
+                                        <li>Obtén la calificación mínima aprobatoria (generalmente 70%)</li>
+                                        <li>Una vez completados los requisitos, ve a la pestaña "Certificados" en tu perfil</li>
+                                        <li>Selecciona el certificado que deseas descargar</li>
+                                    </ol>
+                                    <p>Los certificados están disponibles en formato PDF y pueden ser compartidos directamente en LinkedIn desde la plataforma.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Soporte Técnico -->
+                        <div class="faq-item" data-category="tecnico">
+                            <div class="faq-question">
+                                <span>Los videos no se reproducen correctamente. ¿Qué puedo hacer?</span>
+                                <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                </svg>
+                            </div>
+                            <div class="faq-answer">
+                                <div class="faq-answer-content">
+                                    <p>Si tienes problemas con la reproducción de videos, intenta lo siguiente:</p>
+                                    <ul>
+                                        <li>Verifica tu conexión a internet</li>
+                                        <li>Actualiza tu navegador a la última versión</li>
+                                        <li>Limpia la caché y las cookies del navegador</li>
+                                        <li>Prueba con otro navegador (Chrome, Firefox, Safari, Edge)</li>
+                                        <li>Desactiva las extensiones o bloqueadores de anuncios</li>
+                                    </ul>
+                                    <p>Si el problema persiste, contacta a soporte técnico proporcionando detalles sobre tu sistema operativo, navegador y el curso específico donde experimentas el problema.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="no-results" id="noResults" style="display: none;">
+                        <p>No se encontraron preguntas que coincidan con tu búsqueda.</p>
+                    </div>
+                </div>
+                
+                <div class="help-box">
+                    <div class="help-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </div>
+                    <div class="help-text">
+                        <h3>¿Necesitas ayuda y tutoriales?</h3>
+                        <p>Haz click en el siguiente botón para acceder a ellos.</p>
+                    </div>
+                    <a href="ayudaytutos.html">
+                        <button class="help-button">Ayuda y Tutoriales</button>
+                    </a>
+                </div>
+                <div class="help-box">
+                    <div class="help-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </div>
+                    <div class="help-text">
+                        <h3>¿No encuentras lo que buscas?</h3>
+                        <p>Si tu pregunta no aparece en las FAQ, puedes enviarnos un mensaje a través de nuestro formulario de contacto.</p>
+                    </div>
+                    <a href="reportes.html">
+                        <button class="help-button">Contactar Soporte</button>
+                    </a>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <script>
+        // Script para manejar las preguntas frecuentes
+        const questions = document.querySelectorAll('.faq-question');
+        
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                
+                // Alternar visibilidad de la respuesta
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    question.style.fontWeight = '500';
+                    question.style.color = 'var(--primary-color)';
+                    question.classList.remove('open');
+                } else {
+                    answer.style.display = 'block';
+                    question.style.fontWeight = '600';
+                    question.style.color = 'var(--secondary-color)';
+                    question.classList.add('open');
+                }
+            });
+        });
+    </script>

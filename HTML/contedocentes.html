@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSpire - Gestión de Archivos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+   
+</head>
+<body>
+    <!-- Header principal con navegación -->
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header secundario con título de página -->
+    <header class="page-header">
+        <h1>Gestión de Carpetas y Archivos para Docentes</h1>
+    </header>
+
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        <!-- Barra lateral -->
+        <div class="sidebar">
+            <div class="sidebar-item active">
+                <div class="sidebar-item-icon">📁</div>
+                <div class="sidebar-item-text">Mi Unidad</div>
+            </div>
+            <div class="sidebar-item">
+                <div class="sidebar-item-icon">⭐</div>
+                <div class="sidebar-item-text">Destacados</div>
+            </div>
+            <div class="sidebar-item">
+                <div class="sidebar-item-icon">🗑️</div>
+                <div class="sidebar-item-text">Papelera</div>
+            </div>
+        </div>
+
+        <!-- Contenido principal -->
+        <div class="content">
+            <!-- Navegación de ruta -->
+            <div class="path-nav">
+                <span class="path-item">Mi Unidad</span>
+            </div>
+            
+            <!-- Acciones -->
+            <div class="actions">
+                <button class="btn btn-primary" id="createFolderBtn">
+                    <span class="btn-icon">➕</span> Nueva Carpeta
+                </button>
+                <button class="btn" id="uploadFileBtn">
+                    <span class="btn-icon">📤</span> Subir Archivo
+                </button>
+            </div>
+
+            <!-- Contenedor de archivos y carpetas -->
+            <div class="files-container" id="filesContainer">
+                <div class="folder-card" data-name="Inglés">
+                    <div class="card-icon">📁</div>
+                    <div class="card-name">Inglés</div>
+                    <div class="card-actions">
+                        <button>⋮</button>
+                    </div>
+                </div>
+                <div class="folder-card" data-name="Matemáticas">
+                    <div class="card-icon">📁</div>
+                    <div class="card-name">Matemáticas</div>
+                    <div class="card-actions">
+                        <button>⋮</button>
+                    </div>
+                </div>
+                <div class="folder-card" data-name="Ciencias">
+                    <div class="card-icon">📁</div>
+                    <div class="card-name">Ciencias</div>
+                    <div class="card-actions">
+                        <button>⋮</button>
+                    </div>
+                </div>
+           
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para crear carpeta -->
+    <div class="modal" id="createFolderModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-title">Crear nueva carpeta</div>
+            <div class="form-group">
+                <label for="folderName">Nombre de la carpeta</label>
+                <input type="text" id="folderName" placeholder="Ingrese el nombre de la carpeta">
+            </div>
+            <div class="modal-actions">
+                <button class="btn" id="cancelFolderBtn">Cancelar</button>
+                <button class="btn btn-primary" id="saveFolderBtn">Crear</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para subir archivo -->
+    <div class="modal" id="uploadFileModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-title">Subir archivo</div>
+            <div class="form-group">
+                <label for="fileName">Seleccionar archivo</label>
+                <input type="file" id="fileInput">
+            </div>
+            <div class="modal-actions">
+                <button class="btn" id="cancelFileBtn">Cancelar</button>
+                <button class="btn btn-primary" id="uploadBtn">Subir</button>
+            </div>
+        </div>
+    </div>
+<body>
+    

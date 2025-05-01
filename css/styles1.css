@@ -1,0 +1,404 @@
+
+/* 
+========================================
+VARIABLES GLOBALES
+========================================
+*/
+:root {
+    --fondo: #1f2831;
+    --color-botones: #0078d4;
+    --color-botones2: #2e3c47;
+    --gris-adicional: #273940;
+    --gris-adicional2: #3a4a56;
+    --fuente: "Poppins", sans-serif;
+    
+    /* Colores del diseño original */
+    --azul-oscuro: #273940;
+    --gris-azulado: #5A6E73;
+    --azul-muy-oscuro: #1f2831;
+    --acento: #A7F2EB;
+    --texto-claro: white;
+    --fondo-claro: #F2F2DF;
+}
+
+/* 
+========================================
+RESET Y CONFIGURACIÓN GENERAL
+========================================
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente);
+    color: var(--texto-claro);
+}
+
+body {
+    background-color: var(--fondo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 
+========================================
+HEADER PRINCIPAL
+========================================
+*/
+.containertop {
+    width: 100%;
+    height: 10vh;
+    background-color: var(--gris-adicional);
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    backdrop-filter: blur(40px);
+}
+
+.containertoplogo {
+    width: 30%;
+    height: 10vh;
+    display: flex;
+}
+
+.logoskill {
+   width: 18%;
+}
+
+.nameskill {
+    align-self: center;
+    font-size: 20px;
+}
+
+.containertopcenter {
+    width: 8%;
+}
+
+.containertopnav {
+    width: 62%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: transparent;
+}
+
+.navbutton {
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--texto-claro);
+    font-size: 20px;
+    border: none;
+    width: auto;
+    height: 100%;
+    margin-left: 5px;
+    padding: 12px;
+    border-radius: 15px;
+    transition: 0.5s;
+}
+
+.navbutton:hover {
+    background-color: var(--texto-claro);
+    color: black;
+    cursor: pointer;
+}
+
+.profilesection {
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    height: 100%;
+}
+
+.profilesection img {
+    width: 80%;
+    height: 80%;
+    padding: 3px;
+}
+
+
+
+
+
+/* Estilos base */
+
+
+body {
+    background-color: var(--fondo);
+    color: var(--texto-claro);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--texto-claro);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Header */
+header {
+    background-color: var(--fondo);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    font-size: 24px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Secciones principales */
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+    background-color: var(--gris-azulado);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+section h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Sección de búsqueda */
+.busqueda-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.busqueda-container input {
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: var(--color-botones2);
+}
+
+.filtros {
+    display: flex;
+    gap: 10px;
+}
+
+.filtros select {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--color-botones2);
+}
+
+.btn-buscar {
+    background-color:var(--fondo);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Tarjetas de nivel */
+.tarjetas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.tarjeta {
+    background-color: var(--fondo);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-explorar {
+    background-color: var(--gris-adicional);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Sección de materias */
+.materias-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.materia-item {
+    background-color: var(--fondo);
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.materia-icono {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.download button{
+    width: 100%;
+    border-style: none;
+    border-radius: 20px;
+}
+
+/* Formulario para docentes */
+.formulario-container {
+    background-color: var(--fondo);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.formulario-container h3 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-grupo {
+    margin-bottom: 15px;
+}
+
+.form-grupo label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-grupo input,
+.form-grupo select,
+.form-grupo textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--gris-adicional2);
+}
+
+.botones {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-guardar {
+    background-color: var(--color-botones2);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.btn-cancelar {
+    background-color:var(--gris-azulado);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    flex: 1;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-md);
+    text-align: left;
+}
+
+.footer-section h4 {
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-section ul li a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-section ul li a:hover {
+    color: var(--white);
+}
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    padding-top: var(--spacing-xl);
+    margin-top: var(--spacing-xl);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: var(--font-size-sm);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .filtros {
+        flex-direction: column;
+    }
+}

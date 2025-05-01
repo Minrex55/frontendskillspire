@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <link rel="stylesheet" href="../css/styleusers.css">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
+    <title>SkillSpire</title>
+</head>
+<body> 
+    <div class="container">
+        <div class="card">
+            <!-- Controles de accesibilidad -->
+            <div class="accessibility-controls">
+                <button class="accessibility-btn" id="contrast-toggle" aria-label="Alternar alto contraste">
+                    <i class="fas fa-adjust"></i>
+                </button>
+                <button class="accessibility-btn" id="text-size-toggle" aria-label="Alternar tamaño de texto">
+                    <i class="fas fa-text-height"></i>
+                </button>
+                <button class="accessibility-btn" id="screen-reader-help" aria-label="Ayuda para lectores de pantalla">
+                    <i class="fas fa-volume-up"></i>
+                </button>
+            </div>
+            
+            <!-- Mensajes de alerta -->
+            <div class="alert success" id="success-alert">Operación completada con éxito</div>
+            <div class="alert error" id="error-alert">Ha ocurrido un error</div>
+            
+            <!-- Pestañas para alternar entre inicio de sesión y registro -->
+            <div class="tab-container">
+                <div class="tab active" id="login-tab">Iniciar Sesión</div>
+                <div class="tab" id="register-tab">Registrarse</div>
+            </div>
+            
+            <!-- Formulario de inicio de sesión -->
+            <div class="tab-content active" id="login-content">
+                <h2 class="card-title">Iniciar Sesión</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">Correo Electrónico</label>
+                        <input type="email" id="login-email" name="email" required aria-required="true">
+                        <div class="error-message" id="login-email-error">Por favor ingrese un correo electrónico válido</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Contraseña</label>
+                        <div class="password-container">
+                            <input type="password" id="login-password" name="password" required aria-required="true">
+                            <button type="button" class="password-toggle" aria-label="Mostrar/ocultar contraseña">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="login-password-error">La contraseña es requerida</div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Iniciar Sesión</button>
+                    
+                    <div class="form-footer">
+                        <a href="#" id="forgot-password">¿Olvidó su contraseña?</a>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Formulario de registro -->
+            <div class="tab-content" id="register-content">
+                <h2 class="card-title">Crear Cuenta</h2>
+                <form id="register-form">
+                    <div class="form-group">
+                        <label for="register-name">Nombre Completo</label>
+                        <input type="text" id="register-name" name="name" required aria-required="true">
+                        <div class="error-message" id="register-name-error">Por favor ingrese su nombre</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-email">Correo Electrónico</label>
+                        <input type="email" id="register-email" name="email" required aria-required="true">
+                        <div class="error-message" id="register-email-error">Por favor ingrese un correo electrónico válido</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-password">Contraseña</label>
+                        <div class="password-container">
+                            <input type="password" id="register-password" name="password" required aria-required="true">
+                            <button type="button" class="password-toggle" aria-label="Mostrar/ocultar contraseña">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="register-password-error">La contraseña debe tener al menos 8 caracteres</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="register-confirm-password">Confirmar Contraseña</label>
+                        <div class="password-container">
+                            <input type="password" id="register-confirm-password" name="confirm-password" required aria-required="true">
+                            <button type="button" class="password-toggle" aria-label="Mostrar/ocultar contraseña">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="error-message" id="register-confirm-password-error">Las contraseñas no coinciden</div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Registrarse</button>
+                </form>
+            </div>
+            
+            <!-- Formulario para recuperar contraseña (inicialmente oculto) -->
+            <div class="tab-content" id="forgot-password-content">
+                <h2 class="card-title">Recuperar Contraseña</h2>
+                <form id="forgot-password-form">
+                    <div class="form-group">
+                        <label for="forgot-email">Correo Electrónico</label>
+                        <input type="email" id="forgot-email" name="email" required aria-required="true">
+                        <div class="error-message" id="forgot-email-error">Por favor ingrese un correo electrónico válido</div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Enviar Enlace de Recuperación</button>
+                    
+                    <div class="form-footer">
+                        <a href="#" id="back-to-login">Volver a Iniciar Sesión</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/scriptusers.js"></script>   
+</body>
+</html>

@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso Educativo - SkillSpire</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--fuente);
+        }
+
+        body {
+            background-color: var(--fondo);
+            color: white;
+        }
+
+        /*Inicio del header*/
+        .containertop {
+            width: 100%;
+            height: 10%;
+            background-color: #273940; /* Color con opacidad */
+            display: flex;
+            position: fixed; /* Fijar en la parte superior */
+            top: 0; /* Asegura que esté arriba */
+            left: 0;
+            z-index: 1000; /* Que esté por encima de todo */
+            backdrop-filter: blur(40px); /* (opcional) efecto moderno de desenfoque */
+        }
+        .containertoplogo {
+            width: 30%;
+            height: 10vh;
+            display: flex;
+        }
+        .logoskill {
+           width: 18%;
+        }
+        .nameskill {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            align-self: center;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+        }
+        .containertopcenter {
+            width: 8%;
+            height: 10vh;
+        }
+        .containertopnav {
+            width: 62%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: #00000000;
+        }
+        .navbutton {
+            text-decoration: none;
+            background-color: #00000000;
+            color: white;
+            font-size: 20px;
+            border-style: none;
+            width: auto;
+            height: 100%;
+            margin-left: 5px;
+            padding: 12px;
+            border-radius: 15px;
+            transition: 0.5s;
+        }
+        .navbutton:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+        .profilesection {
+            align-items: center;
+            justify-content: center;
+            width: 10%;
+            height: 100%;
+        }
+        .profilesection img {
+            width: 80%;
+            height: 80%;
+            padding: 3px;
+        }
+        /*Fin del header*/
+        :root {
+            --fondo: #1f2831;
+            --color-botones: #0078d4;
+            --color-botones2: #2e3c47;
+            --gris-adicional: #273940;
+            --gris-adicional2: #3a4a56;
+            --fuente: "Poppins", sans-serif;
+        }
+
+        /* Estilos para la sección de proceso educativo */
+        .main-container {
+            padding-top: 12vh;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+        }
+
+        .student-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 1.5rem;
+            object-fit: cover;
+            border: 3px solid var(--color-botones);
+        }
+
+        .student-details h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .student-details p {
+            color: #ccc;
+            margin-bottom: 0.25rem;
+        }
+
+        .process-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .process-card {
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .process-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .process-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-botones);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .process-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .process-content {
+            margin-bottom: 1rem;
+        }
+
+        .process-progress {
+            width: 100%;
+            height: 8px;
+            background-color: var(--gris-adicional2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: var(--color-botones);
+            border-radius: 10px;
+        }
+
+        .process-stats {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .current-unit {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+            background-color: var(--gris-adicional2);
+            padding: 0.8rem;
+            border-radius: 10px;
+        }
+
+        .unit-indicator {
+            width: 12px;
+            height: 12px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .action-button {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            background-color: var(--color-botones);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-button:hover {
+            background-color: #0063b1;
+        }
+
+        .grade-info {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+        }
+
+        .grade-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .grade-subjects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .subject-card {
+            background-color: var(--gris-adicional2);
+            padding: 1.2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .subject-card:hover {
+            transform: scale(1.05);
+        }
+
+        .subject-grade {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .subject-grade.good {
+            color: #4CAF50;
+        }
+
+        .subject-grade.medium {
+            color: #FFC107;
+        }
+
+        .subject-grade.low {
+            color: #F44336;
+        }
+
+        .subject-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .subject-teacher {
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .education-timeline {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+        }
+
+        .timeline-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 1rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            height: 100%;
+            width: 3px;
+            background-color: var(--color-botones);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--color-botones);
+            background-color: var(--gris-adicional);
+            border-radius: 50%;
+        }
+
+        .timeline-item.complete .timeline-dot {
+            background-color: var(--color-botones);
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content {
+            background-color: var(--gris-adicional2);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: var(--color-botones);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .upcoming-events {
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+        }
+
+        .events-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .event-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: var(--gris-adicional2);
+            border-radius: 10px;
+        }
+
+        .event-date {
+            width: 70px;
+            height: 70px;
+            background-color: var(--color-botones);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .event-day {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .event-month {
+            font-size: 0.9rem;
+        }
+
+        .event-details h3 {
+            margin-bottom: 0.3rem;
+        }
+
+        .event-details p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <h1 class="page-title">Proceso Académico del Estudiante</h1>
+
+        <!-- Información del estudiante -->
+        <div class="student-info">
+            <img src="../images/profile.png" alt="Foto del estudiante" class="student-avatar">
+            <div class="student-details">
+                <h2>Miguel Ángel Rodríguez</h2>
+                <p>Grado: 10° B</p>
+                <p>ID Estudiante: 2025-1034</p>
+                <p>Año Lectivo: 2025</p>
+            </div>
+        </div>
+
+        <!-- Materias en proceso -->
+        <div class="process-container">
+            <!-- Materia 1 -->
+            <div class="process-card">
+                <div class="process-header">
+                    <div class="process-icon">M</div>
+                    <h2 class="process-title">Matemáticas</h2>
+                </div>
+                <div class="process-content">
+                    <p>Álgebra, geometría analítica y fundamentos de cálculo.</p>
+                </div>
+                <div class="process-progress">
+                    <div class="progress-bar" style="width: 75%;"></div>
+                </div>
+                <div class="process-stats">
+                    <span>Progreso: 75%</span>
+                    <span>3/4 bimestres</span>
+                </div>
+                <div class="current-unit">
+                    <div class="unit-indicator"></div>
+                    <span>Unidad actual: Funciones Trigonométricas</span>
+                </div>
+                <button class="action-button">Ver detalles</button>
+            </div>
+
+            <!-- Materia 2 -->
+            <div class="process-card">
+                <div class="process-header">
+                    <div class="process-icon">C</div>
+                    <h2 class="process-title">Ciencias Naturales</h2>
+                </div>
+                <div class="process-content">
+                    <p>Biología celular, química orgánica y física mecánica.</p>
+                </div>
+                <div class="process-progress">
+                    <div class="progress-bar" style="width: 80%;"></div>
+                </div>
+                <div class="process-stats">
+                    <span>Progreso: 80%</span>
+                    <span>3/4 bimestres</span>
+                </div>
+                <div class="current-unit">
+                    <div class="unit-indicator"></div>
+                    <span>Unidad actual: Genética y Herencia</span>
+                </div>
+                <button class="action-button">Ver detalles</button>
+            </div>
+
+            <!-- Materia 3 -->
+            <div class="process-card">
+                <div class="process-header">
+                    <div class="process-icon">L</div>
+                    <h2 class="process-title">Lenguaje y Literatura</h2>
+                </div>
+                <div class="process-content">
+                    <p>Literatura latinoamericana, análisis textual y producción escrita.</p>
+                </div>
+                <div class="process-progress">
+                    <div class="progress-bar" style="width: 70%;"></div>
+                </div>
+                <div class="process-stats">
+                    <span>Progreso: 70%</span>
+                    <span>3/4 bimestres</span>
+                </div>
+                <div class="current-unit">
+                    <div class="unit-indicator"></div>
+                    <span>Unidad actual: Literatura del Siglo XX</span>
+                </div>
+                <button class="action-button">Ver detalles</button>
+            </div>
+        </div>
+
+        <!-- Calificaciones actuales -->
+        <div class="grade-info">
+            <h2 class="grade-title">Calificaciones Actuales</h2>
+            <div class="grade-subjects">
+                <div class="subject-card">
+                    <p class="subject-name">Matemáticas</p>
+                    <div class="subject-grade good">8.5</div>
+                    <p class="subject-teacher">Prof. Carlos Méndez</p>
+                </div>
+                <div class="subject-card">
+                    <p class="subject-name">Ciencias Naturales</p>
+                    <div class="subject-grade good">9.2</div>
+                    <p class="subject-teacher">Prof. Laura Torres</p>
+                </div>
+                <div class="subject-card">
+                    <p class="subject-name">Lenguaje y Literatura</p>
+                    <div class="subject-grade medium">7.8</div>
+                    <p class="subject-teacher">Prof. Ana Gutiérrez</p>
+                </div>
+                <div class="subject-card">
+                    <p class="subject-name">Historia</p>
+                    <div class="subject-grade good">8.9</div>
+                    <p class="subject-teacher">Prof. Roberto Sánchez</p>
+                </div>
+                <div class="subject-card">
+                    <p class="subject-name">Educación Física</p>
+                    <div class="subject-grade good">9.5</div>
+                    <p class="subject-teacher">Prof. Diego Ramírez</p>
+                </div>
+                <div class="subject-card">
+                    <p class="subject-name">Inglés</p>
+                    <div class="subject-grade low">6.7</div>
+                    <p class="subject-teacher">Prof. María Johnson</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Línea de tiempo educativa -->
+        <div class="education-timeline">
+            <h2 class="timeline-title">Historial Académico</h2>
+            <div class="timeline">
+                <!-- Evento 1 -->
+                <div class="timeline-item complete">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">15 de abril, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Completado: Proyecto de Ciencias</h3>
+                        <p>Desarrollo exitoso del proyecto sobre energías renovables.</p>
+                        <span class="achievement-badge">Calificación: 9.8</span>
+                    </div>
+                </div>
+
+                <!-- Evento 2 -->
+                <div class="timeline-item complete">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2 de abril, 2025</div>
+                    <div class="timeline-content">
+                        <h3>Completado: Examen de Matemáticas</h3>
+                        <p>Evaluación sobre álgebra y trigonometría.</p>
+                        <span class="achievement-badge">Calificación: 8.5</span>
+                    </div>
+                </div>
+
+                <!-- Evento 3 - Actual -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Actual</div>
+                    <div class="timeline-content">
+                        <h3>En progreso: Ensayo de Literatura</h3>
+                        <p>Análisis crítico de obras latinoamericanas del siglo XX.</p>
+                        <p>Fecha de entrega: 5 de mayo, 2025</p>
+                    </div>
+                </div>
+
+                <!-- Evento 4 - Futuro -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">Próximamente</div>
+                    <div class="timeline-content">
+                        <h3>Pendiente: Exámenes Finales</h3>
+                        <p>Evaluaciones finales correspondientes al año lectivo 2025.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eventos próximos -->
+        <div class="upcoming-events">
+            <h2 class="events-title">Próximos Eventos</h2>
+            <div class="event-card">
+                <div class="event-date">
+                    <div class="event-day">25</div>
+                    <div class="event-month">Abr</div>
+                </div>
+                <div class="event-details">
+                    <h3>Reunión de Padres</h3>
+                    <p>Salón de actos - 18:30hrs</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-date">
+                    <div class="event-day">03</div>
+                    <div class="event-month">May</div>
+                </div>
+                <div class="event-details">
+                    <h3>Feria de Ciencias</h3>
+                    <p>Patio central - Todo el día</p>
+                </div>
+            </div>
+            <div class="event-card">
+                <div class="event-date">
+                    <div class="event-day">10</div>
+                    <div class="event-month">May</div>
+                </div>
+                <div class="event-details">
+                    <h3>Entrega de Calificaciones</h3>
+                    <p>Disponibles en el portal - 12:00hrs</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

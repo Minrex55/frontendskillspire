@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador de Rúbricas | SkillSpire</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --fondo: #1f2831;
+            --color-botones: #0078d4;
+            --color-botones2: #2e3c47;
+            --gris-adicional: #273940;
+            --gris-adicional2: #3a4a56;
+            --fuente: "Poppins", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--fuente);
+        }
+
+        body {
+            background-color: var(--fondo);
+            color: white;
+            padding-top: 10vh; /* Espacio para el header fijo */
+        }
+
+        /* Inicio del header */
+        .containertop {
+            width: 100%;
+            height: 10%;
+            background-color: #273940;
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(40px);
+        }
+
+        .containertoplogo {
+            width: 30%;
+            height: 10vh;
+            display: flex;
+        }
+
+        .logoskill {
+            width: 18%;
+        }
+
+        .nameskill {
+            color: white;
+            align-self: center;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .containertopcenter {
+            width: 8%;
+            height: 10vh;
+        }
+
+        .containertopnav {
+            width: 62%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: #00000000;
+        }
+
+        .navbutton {
+            text-decoration: none;
+            background-color: #00000000;
+            color: white;
+            font-size: 20px;
+            border-style: none;
+            width: auto;
+            height: 100%;
+            margin-left: 5px;
+            padding: 12px;
+            border-radius: 15px;
+            transition: 0.5s;
+        }
+
+        .navbutton:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+
+        .profilesection {
+            align-items: center;
+            justify-content: center;
+            width: 10%;
+            height: 100%;
+        }
+
+        .profilesection img {
+            width: 80%;
+            height: 80%;
+            padding: 3px;
+        }
+        /* Fin del header */
+
+        /* Contenedor principal */
+        .main-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        /* Encabezado de la página */
+        .page-header {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--gris-adicional);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-header h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .page-header p {
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Formulario de información básica */
+        .form-section {
+            background-color: var(--gris-adicional);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section h3 {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gris-adicional2);
+            font-size: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--gris-adicional2);
+            border: 1px solid #3a4a56;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--color-botones);
+            box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.3);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .form-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        /* Contenedor de rúbricas */
+        .rubric-container {
+            background-color: var(--gris-adicional);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .rubric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .rubric-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            background-color: var(--color-botones);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn:hover {
+            background-color: #0069b9;
+        }
+
+        .btn-secondary {
+            background-color: var(--color-botones2);
+        }
+
+        .btn-secondary:hover {
+            background-color: #3a4a56;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        /* Tabla de rúbricas */
+        .rubric-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .rubric-table th,
+        .rubric-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .rubric-table th {
+            background-color: var(--gris-adicional2);
+            color: white;
+            font-weight: 600;
+        }
+
+        .rubric-table td {
+            vertical-align: top;
+        }
+
+        .rubric-table tr:hover {
+            background-color: rgba(58, 74, 86, 0.3);
+        }
+
+        .level-header {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .range-points {
+            font-size: 14px;
+            color: #a0a0a0;
+        }
+
+        /* Contenedor de criterios */
+        .criteria-container {
+            margin-bottom: 20px;
+        }
+
+        .criteria-item {
+            background-color: var(--gris-adicional2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .criteria-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .criteria-title {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .criteria-weight {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .criteria-weight-label {
+            font-size: 14px;
+        }
+
+        .criteria-weight-input {
+            width: 60px;
+            padding: 5px;
+            background-color: var(--gris-adicional);
+            border: 1px solid #3a4a56;
+            border-radius: 4px;
+            color: white;
+            text-align: center;
+        }
+
+        .criteria-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .level-item {
+            background-color: var(--gris-adicional);
+            border-radius: 6px;
+            padding: 12px;
+        }
+
+        .level-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .level-title {
+            font-weight: 600;
+        }
+
+        .level-points {
+            background-color: var(--color-botones);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .level-description {
+            font-size: 14px;
+            color: #e0e0e0;
+            min-height: 60px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .remove-criteria {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: transparent;
+            border: none;
+            color: #a0a0a0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .remove-criteria:hover {
+            color: #e74c3c;
+        }
+
+        /* Modal para añadir criterio */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .modal {
+            background-color: var(--gris-adicional);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .close-modal {
+            background-color: transparent;
+            border: none;
+            color: #a0a0a0;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .close-modal:hover {
+            color: white;
+        }
+
+        .level-container {
+            background-color: var(--gris-adicional2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .level-form-group {
+            margin-bottom: 10px;
+        }
+
+        .add-level-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: var(--gris-adicional2);
+            border: 1px dashed #a0a0a0;
+            border-radius: 5px;
+            color: #a0a0a0;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .add-level-btn:hover {
+            background-color: rgba(58, 74, 86, 0.5);
+            color: white;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* Sección de vista previa */
+        .preview-section {
+            background-color: var(--gris-adicional);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .preview-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .preview-table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow-x: auto;
+        }
+
+        .preview-table th,
+        .preview-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid var(--gris-adicional2);
+        }
+
+        .preview-table th {
+            background-color: var(--gris-adicional2);
+            color: white;
+            font-weight: 600;
+        }
+
+        .preview-table th:first-child {
+            width: 250px;
+        }
+
+        .preview-table tr:hover {
+            background-color: rgba(58, 74, 86, 0.3);
+        }
+
+        .criteria-cell {
+            font-weight: 600;
+        }
+
+        .criteria-weight-cell {
+            font-size: 14px;
+            color: #a0a0a0;
+        }
+
+        /* Sección de acciones finales */
+        .actions-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .actions-left {
+            display: flex;
+            gap: 10px;
+        }
+
+        .actions-right {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-lg {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        /* Estilos responsivos */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .criteria-levels {
+                grid-template-columns: 1fr;
+            }
+            
+            .actions-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .actions-left, .actions-right {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .preview-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        /* Agregando algunos estilos extra para la experiencia del usuario */
+        .drag-handle {
+            cursor: move;
+            margin-right: 10px;
+            color: #a0a0a0;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .badge-primary {
+            background-color: var(--color-botones);
+            color: white;
+        }
+
+        .badge-secondary {
+            background-color: var(--gris-adicional2);
+            color: white;
+        }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: var(--gris-adicional2);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .help-icon {
+            color: #a0a0a0;
+            font-size: 14px;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .slide-up {
+            animation: slideUp 0.3s ease-in-out;
+        }
+
+        /* Estilos para el selector de colores */
+        .color-selector {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .color-option {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .color-option.selected {
+            border-color: white;
+        }
+
+        /* Estilos para las pestañas */
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid var(--gris-adicional2);
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .tab.active {
+            border-bottom-color: var(--color-botones);
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header existente -->
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido principal -->
+    <div class="main-container">
+        <!-- Encabezado de la página -->
+        <div class="page-header">
+            <h2>Creador de Rúbricas</h2>
+            <p>Diseña rúbricas de evaluación personalizadas para tus actividades y tareas. Define criterios, niveles de rendimiento y valores de puntuación para evaluar de manera objetiva y transparente.</p>
+        </div>
+
+        <!-- Formulario de información básica -->
+        <div class="form-section">
+            <h3>Información de la Rúbrica</h3>
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="rubric-name">Nombre de la Rúbrica</label>
+                        <input type="text" id="rubric-name" class="form-control" placeholder="Ej: Evaluación de proyecto final" value="Evaluación de proyecto final">
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="rubric-course">Asignatura</label>
+                        <select id="rubric-course" class="form-control">
+                            <option value="1">Programación Web</option>
+                            <option value="2">Matemáticas</option>
+                            <option value="3">Ciencias</option>
+                            <option value="4">Historia</option>
+                            <option value="5">Lenguaje</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="rubric-type">Tipo de Evaluación</label>
+                        <select id="rubric-type" class="form-control">
+                            <option value="1">Proyecto</option>
+                            <option value="2">Tarea</option>
+                            <option value="3">Presentación</option>
+                            <option value="4">Examen</option>
+                            <option value="5">Otro</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-col">
+                    <div class="form-group">
+                        <label for="rubric-max-points">Puntuación Máxima</label>
+                        <input type="number" id="rubric-max-points" class="form-control" placeholder="Ej: 100" value="100">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="rubric-description">Descripción</label>
+                <textarea id="rubric-description" class="form-control" placeholder="Describe el propósito y alcance de esta rúbrica">Esta rúbrica evalúa el proyecto final de programación web, considerando el diseño, funcionalidad, código y presentación del proyecto.</textarea>
+            </div>
+        </div>
+
+        <!-- Contenedor de criterios -->
+        <div class="rubric-container">
+            <div class="rubric-header">
+                <h3 class="rubric-title">Criterios de Evaluación</h3>
+                <button id="add-criteria-btn" class="btn">
+                    <i class="fas fa-plus"></i> Añadir Criterio
+                </button>
+            </div>
+            <div class="criteria-container" id="criteria-list">
+                <!-- Criterio 1 -->
+                <div class="criteria-item fade-in">
+                    <button class="remove-criteria">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="criteria-header">
+                        <div class="criteria-title">
+                            <i class="fas fa-grip-vertical drag-handle"></i>
+                            Diseño de Interfaz
+                        </div>
+                        <div class="criteria-weight">
+                            <span class="criteria-weight-label">Peso:</span>
+                            <input type="number" class="criteria-weight-input" value="25" min="0" max="100">
+                            <span>%</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción del criterio</label>
+                        <textarea class="form-control">Evalúa la calidad del diseño visual, usabilidad y experiencia de usuario.</textarea>
+                    </div>
+                    <div class="criteria-levels">
+                        <div class="level-item">
+                            <div class="level-header">
+                                <div class="level-title">Excelente</div>
+                                <div class="level-points">4</div>
+                            </div>
+                            <div class="level-description">Diseño profesional, intuitivo y totalmente responsive, con excelente uso de principios de UX/UI.</div>
+                        </div>
+                        <div class="level-item">
+                            <div class="level-header">
+                                <div class="level-title">Bueno</div>
+                                <div class="level-points">3</div>
+                            </div>
+                            <div class="level-description">Diseño bien estructurado y atractivo, con buena responsividad y usabilidad.</div>
+                        </div>
+                        <div class="level-item">
+                            <div class="level-header">
+                                <div class="level-title">Regular</div>
+                                <div class="level-points">2</div>
+                            </div>
+                            <div class="level-description">Diseño básico con algunas deficiencias en usabilidad o responsividad.</div>
+                        </div>
+                        <div class="level-item">
+                            <div class="level-header">
+                                <div class="level-title">Insuficiente</div>
+                                <div class="level-points">1</div>
+                            </div>
+                            <div class="level-description">Diseño deficiente, poco intuitivo y con problemas significativos de usabilidad.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Criterio 2 -->
+                <div class="criteria-item fade-in">
+                    <button class="remove-criteria">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="criteria-header">
+                        <div class="criteria-title">
+                            <i class="fas fa-grip-vertical drag-handle"></i>
+                            Funcionalidad
+                        </div>
+                        <div class="criteria-weight">
+                            <span class="criteria-weight-label">Peso:</span>
+                            <input type="number" class="criteria-weight-input" value="30" min="0" max="100">
+                            <span>%</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción del criterio</label>
+                        <textarea class="form-control">Evalúa el funcionamiento correcto de las características y requisitos del proyecto.</textarea>
+                    </div>
+                    <div class="criteria-levels">
+                        <div class="level-item">
+                            <div class="level-header">
+                                <div class="level-title">Excelente</div>
+                                <div class="level-points">4</div>
+                            </div>
+                            <div class="level-description">Todas las funcionalidades implementadas correctamente, sin errores, e incluso añade características adicionales valiosas.</div>
+                        </div>
+                        <div class="level-item">
+                            <div class="level-header">
+                                <div class="level-title">Bueno</div>
+                                <div class="level-points">3</div>
+                            </div>
+                            <div class="level-description">Funcionalidades principales implementadas correctamente con errores mínimos o menores.</div>
+                        </div>
+                        <div class="level-item">
+                            <div class="level-header">
+                                <div class="level-title">Regular</div>
+                                <div class="level-points">2</div>
+                            </div>
+                            <div class="level-description">Funcionalidades básicas implementadas pero con algunos errores o limitaciones importantes.</div>
+                        </div>
+                        <div class="level-item">
+                            <div class="level-header">
+                                <div class="level-title">Insuficiente</div>
+                                <div class="level-points">1</div>
+                            </div>
+                            <div class="level-description">Múltiples funcionalidades ausentes o con errores críticos que afectan el uso del proyecto.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Criterio 3 -->
+                <div class="criteria-item fade-in">
+                    <button class="remove-criteria">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <div class="criteria-header">
+                        <div class="criteria-title">
+                            <i class="fas fa-grip-vertical drag-handle"></i>
+                            Calidad del Código
+                        </div>
+                        <div class="criteria-weight">
+                            <span class="criteria-weight-label">Peso:</span>
+                            <input type="number" class="criteria-weight-input" value="25" min="0" max="100">
+                            <span>%</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción del criterio</label>
+                        <textarea class="form-control">Evalúa la estructura, legibilidad, optimización y buenas prácticas en el código.</textarea>
+                    </div>
+                    <div class="criteria-levels">
+                        <div class="level-item">
+                            <div class="level-header">
+                                <div class="level-title">Excelente</div>
+                                <div class="level-points">4</div>
+                            </div>
+                            <div class="level-description">Código bien estructurado, optimizado, documentado y siguiendo todas las buenas prácticas y estándares.</div>

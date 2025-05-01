@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSpire - Registros de Asistencia</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --fondo: #1f2831;
+            --color-botones: #0078d4;
+            --color-botones2: #2e3c47;
+            --gris-adicional: #273940;
+            --gris-adicional2: #3a4a56;
+            --fuente: "Poppins", sans-serif;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --danger: #F44336;
+            --info: #2196F3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--fuente);
+        }
+
+        body {
+            background-color: var(--fondo);
+            color: white;
+        }
+
+        /*Inicio del header*/
+        .containertop {
+            width: 100%;
+            height: 10%;
+            background-color: #273940; /* Color con opacidad */
+            display: flex;
+            position: fixed; /* Fijar en la parte superior */
+            top: 0; /* Asegura que esté arriba */
+            left: 0;
+            z-index: 1000; /* Que esté por encima de todo */
+            backdrop-filter: blur(40px); /* (opcional) efecto moderno de desenfoque */
+        }
+        .containertoplogo {
+            width: 30%;
+            height: 10vh;
+            display: flex;
+        }
+        .logoskill {
+            width: 18%;
+        }
+        .nameskill {
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            align-self: center;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+        }
+        .containertopcenter {
+            width: 8%;
+            height: 10vh;
+        }
+        .containertopnav {
+            width: 62%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            background-color: #00000000;
+        }
+        .navbutton {
+            text-decoration: none;
+            background-color: #00000000;
+            color: white;
+            font-size: 20px;
+            border-style: none;
+            width: auto;
+            height: 100%;
+            margin-left: 5px;
+            padding: 12px;
+            border-radius: 15px;
+            transition: 0.5s;
+        }
+        .navbutton:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+        }
+        .profilesection {
+            align-items: center;
+            justify-content: center;
+            width: 10%;
+            height: 100%;
+        }
+        .profilesection img {
+            width: 80%;
+            height: 80%;
+            padding: 3px;
+        }
+        /*Fin del header*/
+
+        /* Main container */
+        .main-container {
+            width: 100%;
+            padding: 120px 5% 50px;
+            min-height: 100vh;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: white;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        /* Content Container */
+        .content-container {
+            background-color: var(--gris-adicional);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Dashboard Header */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .course-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .selector-label {
+            font-weight: 500;
+        }
+
+        .select-control {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--gris-adicional2);
+            background-color: var(--fondo);
+            color: white;
+            font-size: 16px;
+            min-width: 200px;
+        }
+
+        .export-button {
+            background-color: var(--color-botones);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .export-button:hover {
+            background-color: #0062ad;
+            transform: translateY(-2px);
+        }
+
+        /* Search and Filter Tools */
+        .tools-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: center;
+        }
+
+        .search-container {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 15px 12px 40px;
+            border-radius: 8px;
+            border: 1px solid var(--gris-adicional2);
+            background-color: var(--fondo);
+            color: white;
+            font-size: 16px;
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .date-range {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .date-input {
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--gris-adicional2);
+            background-color: var(--fondo);
+            color: white;
+            font-size: 16px;
+            width: 150px;
+        }
+
+        .filter-btn {
+            background-color: var(--color-botones2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .filter-btn:hover {
+            background-color: var(--gris-adicional2);
+        }
+
+        /* Stats Cards */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: var(--gris-adicional2);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-title {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .stat-percentage {
+            font-size: 14px;
+            color: var(--success);
+        }
+
+        /* Attendance Records Table */
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        .attendance-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .attendance-table th,
+        .attendance-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--gris-adicional2);
+        }
+
+        .attendance-table th {
+            background-color: var(--gris-adicional2);
+            color: white;
+            position: sticky;
+            top: 0;
+            font-weight: 500;
+        }
+
+        .attendance-table tbody tr {
+            transition: background-color 0.3s ease;
+        }
+
+        .attendance-table tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .status-present {
+            background-color: var(--success);
+        }
+
+        .status-late {
+            background-color: var(--warning);
+            color: #333;
+        }
+
+        .status-absent {
+            background-color: var(--danger);
+        }
+
+        .status-excused {
+            background-color: var(--info);
+        }
+
+        /* Detail button */
+        .detail-btn {
+            background-color: var(--gris-adicional);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .detail-btn:hover {
+            background-color: var(--color-botones);
+        }
+
+        /* Pagination */
+        .pagination-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .page-info {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .pagination-controls {
+            display: flex;
+            gap: 5px;
+        }
+
+        .pagination-btn {
+            background-color: var(--gris-adicional2);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination-btn:hover {
+            background-color: var(--color-botones2);
+        }
+
+        .pagination-btn.active {
+            background-color: var(--color-botones);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: var(--gris-adicional);
+            margin: 10% auto;
+            padding: 25px;
+            border-radius: 12px;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: white;
+        }
+
+        .student-profile {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .student-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--gris-adicional2);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+        }
+
+        .student-info h3 {
+            margin-bottom: 5px;
+        }
+
+        .student-details {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .attendance-history {
+            margin-top: 20px;
+        }
+
+        .history-title {
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .history-list {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .history-item {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .attendance-chart {
+            height: 200px;
+            background-color: var(--gris-adicional2);
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* No data */
+        .no-data {
+            padding: 40px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .no-data-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        /* Tabs for DB connection status */
+        .db-status-container {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gris-adicional2);
+        }
+
+        .db-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--success);
+        }
+
+        .db-status-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .db-status-details {
+            background-color: var(--gris-adicional2);
+            border-radius: 8px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 14px;
+            max-height: 120px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .timestamp {
+            color: var(--info);
+        }
+
+        .sync-btn {
+            background-color: var(--color-botones);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sync-btn:hover {
+            background-color: #0062ad;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .export-button {
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tools-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .search-container {
+                width: 100%;
+            }
+            
+            .date-range {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .containertopnav {
+                display: none;
+            }
+            
+            .containertoplogo {
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header según el código proporcionado -->
+    <header>
+        <div class="containertop">
+            <div class="containertoplogo">
+                <img src="../images/logo.png" alt="Logo SkillSpire" title="Logo SkillSpire" class="logoskill">
+                <h1 class="nameskill">SkillSpire</h1>
+            </div>
+            <div class="containertopcenter">
+                <!-- Espacio central -->
+            </div>
+            <div class="containertopnav">
+                <a href="index.html" class="navlink"><button class="navbutton">Home</button></a>
+                <a href="busquedacon.html" class="navlink"><button class="navbutton">Contenidos</button></a>
+                <a href="faq.html" class="navlink"><button class="navbutton">FAQ</button></a>
+                <a href="comunicacion.html" class="navlink"><button class="navbutton">Chats</button></a>
+                <a href="calendario.html" class="navlink"><button class="navbutton">Calendario</button></a>
+                <a href="caliusuarios.html" class="navlink"><button class="navbutton">Calificaciones</button></a>
+                <a href="ia.html" class="navlink"><button class="navbutton">IA</button></a>
+                <div class="profilesection">
+                    <a href="config.html" class="profilelink"><img src="../images/profile.png" class="logoskill"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <h1 class="section-title">Registros de Asistencia</h1>
+        
+        <div class="content-container">
+            <!-- Dashboard Header with course selector and export button -->
+            <div class="dashboard-header">
+                <div class="course-selector">
+                    <span class="selector-label">Curso:</span>
+                    <select class="select-control" id="courseSelect">
+                        <option value="all">Todos los cursos</option>
+                        <option value="CS301" selected>CS301 - Desarrollo Web Frontend</option>
+                        <option value="CS302">CS302 - Desarrollo Web Backend</option>
+                        <option value="CS401">CS401 - Frameworks JavaScript</option>
+                        <option value="CS501">CS501 - Bases de Datos Avanzadas</option>
+                    </select>
+                </div>
+                
+                <button class="export-button">
+                    <span>Exportar</span>
+                    <span>📊</span>
+                </button>
+            </div>
+            
+            <!-- Stats Summary -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-title">Total Estudiantes</div>
+                    <div class="stat-value">32</div>
+                    <div class="stat-percentage">Matriculados en CS301</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Asistencia Promedio</div>
+                    <div class="stat-value">87%</div>
+                    <div class="stat-percentage">Últimas 4 semanas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Ausencias</div>
+                    <div class="stat-value">14</div>
+                    <div class="stat-percentage">Este mes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Clases Impartidas</div>
+                    <div class="stat-value">24</div>
+                    <div class="stat-percentage">Total del semestre</div>
+                </div>
+            </div>
+            
+            <!-- Search and filter tools -->
+            <div class="tools-container">
+                <div class="search-container">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Buscar por nombre o ID de estudiante...">
+                </div>
+                
+                <div class="filter-container">
+                    <div class="date-range">
+                        <input type="date" class="date-input" value="2025-04-01">
+                        <span>hasta</span>
+                        <input type="date" class="date-input" value="2025-04-21">
+                    </div>
+                    
+                    <button class="filter-btn">Aplicar Filtros</button>
+                </div>
+            </div>
+            
+            <!-- Attendance Records Table -->
+            <div class="table-container">
+                <h2 class="section-subtitle">Registros del curso CS301 - Desarrollo Web Frontend</h2>
+                
+                <table class="attendance-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre del Estudiante</th>
+                            <th>Último Check-in</th>
+                            <th>Asistencias</th>
+                            <th>Faltas</th>
+                            <th>Tardanzas</th>
+                            <th>% Asistencia</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ST001</td>
+                            <td>Juan Pérez González</td>
+                            <td>21/04/2025 08:45</td>
+                            <td>22/24</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>92%</td>
+                            <td><span class="status-badge status-present">Regular</span></td>
+                            <td><button class="detail-btn" onclick="openStudentDetail('ST001')">Detalles</button></td>
+                        </tr>
+                        <tr>
+                            <td>ST002</td>
+                            <td>María García Rodríguez</td>
+                            <td>21/04/2025 08:30</td>
+                            <td>24/24</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>100%</td>
+                            <td><span class="status-badge status-present">Regular</span></td>
+                            <td><button class="detail-btn" onclick="openStudentDetail('ST002')">Detalles</button></td>
+                        </tr>
+                        <tr>
+                            <td>ST003</td>
+                            <td>Carlos López Martínez</td>
+                            <td>21/04/2025 09:10</td>
+                            <td>20/24</td>
+                            <td>2</td>
+                            <td>2</td>
+                            <td>83%</td>
+                            <td><span class="status-badge status-late">Atención</span></td>
+                            <td><button class="detail-btn" onclick="openStudentDetail('ST003')">Detalles</button></td>
+                        </tr>
+                        <tr>
+                            <td>ST004</td>
+                            <td>Ana Martínez Sánchez</td>
+                            <td>19/04/2025 08:50</td>
+                            <td>19/24</td>
+                            <td>5</td>
+                            <td>0</td>
+                            <td>79%</td>
+                            <td><span class="status-badge status-absent">Riesgo</span></td>
+                            <td><button class="detail-btn" onclick="openStudentDetail('ST004')">Detalles</button></td>
+                        </tr>
+                        <tr>
+                            <td>ST005</td>
+                            <td>Pedro Ramírez Castro</td>
+                            <td>21/04/2025 08:40</td>
+                            <td>23/24</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>96%</td>
+                            <td><span class="status-badge status-present">Regular</span></td>
+                            <td><button class="detail-btn" onclick="openStudentDetail('ST005')">Detalles</button></td>
+                        </tr>
+                        <tr>
+                            <td>ST006</td>
+                            <td>Laura Fernández López</td>
+                            <td>20/04/2025 08:35</td>
+                            <td>22/24</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>92%</td>
+                            <td><span class="status-badge status-present">Regular</span></td>
+                            <td><button class="detail-btn" onclick="openStudentDetail('ST006')">Detalles</button></td>
+                        </tr>
+                        <tr>
+                            <td>ST007</td>
+                            <td>Miguel Torres Vargas</td>
+                            <td>18/04/2025 09:05</td>
+                            <td>16/24</td>
+                            <td>6</td>
+                            <td>2</td>
+                            <td>67%</td>
+                            <td><span class="status-badge status-absent">Riesgo</span></td>
+                            <td><button class="detail-btn" onclick="openStudentDetail('ST007')">Detalles</button></td>
+                        </tr>
+                        <tr>
+                            <td>ST008</td>
+                            <td>Sofía Gómez Ruiz</td>
+                            <td>21/04/2025 08:55</td>
+                            <td>21/24</td>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>88%</td>
+                            <td><span class="status-badge status-present">Regular</span></td>
+                            <td><button class="detail-btn" onclick="openStudentDetail('ST008')">Detalles</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination-container">
+                <div class="page-info">
+                    Mostrando 1-8 de 32 estudiantes
+                </div>
+                <div class="pagination-controls">
+                    <button class="pagination-btn">&lt;</button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <button class="pagination-btn">4</button>
+                    <button class="pagination-btn">&gt;</button>
+                </div>
+            </div>
+            
+            <!-- Database Connection Status -->
+            <div class="db-status-container">
+                <h3>Estado de conexión a la base de datos</h3>
+                <div class="db-status">
+                    <div class="status-indicator"></div>
+                    <div class="db-status-text">Conectado a la base de datos - Última sincronización: 21/04/2025 08:15 AM</div>
+                </div>
+                
+                <div class="db-status-details">
+                    <div><span class="timestamp">[08:15:22]</span> Conexión establecida con el servidor DB</div>
+                    <div><span class="timestamp">[08:15:23]</span> Sincronizando registros de asistencia...</div>
+                    <div><span class="timestamp">[08:15:25]</span> 32 registros actualizados correctamente</div>
+                    <div><span class="timestamp">[08:15:26]</span> 4 nuevos registros encontrados y añadidos</div>
+                </div>
+                
+                <button class="sync-btn">Sincronizar ahora</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Student Detail Modal -->
+    <div id="studentDetailModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            
+            <div class="student-profile">
+                <div class="student-avatar">JC</div>
+                <div class="student-info">
+                    <h3>Carlos López Martínez</h3>
+                    <div class="student-details">
+                        <div>ID: ST003</div>
+                        <div>Curso: CS301 - Desarrollo Web Frontend</div>
+                        <div>Email: carlos.lopez@example.com</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-title">Asistencias</div>
+                    <div class="stat-value">20/24</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Faltas</div>
+                    <div class="stat-value">2</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">Tardanzas</div>
+                    <div class="stat-value">2</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-title">% Asistencia</div>
+                    <div class="stat-value">83%</div>
+                </div>
+            </div>
+            
+            <div class="attendance-chart">
+                Gráfico histórico de asistencia
+            </div>
+            
+            <div class="attendance-history">
+                <h3 class="history-title">Historial de Asistencia</h3>
+                <div class="history-list">
+                    <div class="history-item">
+                        <span>21/04/2025</span>
+                        <span>09:10 AM</span>
+                        <span class="status-badge status-late">Tarde</span>
+                    </div>
+                    <div class="history-item">
+                        <span>20/04/2025</span>
+                        <span>08:50 AM</span>
+                        <span class="status-badge status-present">Presente</span>
+                    </div>
